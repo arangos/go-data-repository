@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-independent_agency_payment_seq
+      author: andres.arango
+      changes:
+        - sql:
+            sql: CREATE SEQUENCE independent_agency_payment_seq START WITH 1 INCREMENT BY 1;

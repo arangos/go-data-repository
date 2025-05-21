@@ -1,0 +1,535 @@
+[
+    {
+        "vacancyName": "Vehicle Detailer",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Vehicle Detailer",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 2,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Vehicle Detailer",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 3,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Vehicle Detailer",
+        "vacantLocation": "null",
+        "vacancies": 100,
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 4,
+        "status": "Open"
+    },
+    {
+        "vacancyName": "Vehicle Detailer",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "General Labor",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "General Labor",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 2,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "General Labor",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 3,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "General Labor",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 4,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "General Labor",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 5,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Personal Caregiver",
+        "vacantLocation": "Conejo valley",
+        "vacancies": 40,
+        "observation": "null",
+        "partner": "Visa F",
+        "round": 1,
+        "status": "Open"
+    },
+    {
+        "vacancyName": "Personal Caregiver",
+        "vacantLocation": "South Orange",
+        "vacancies": 30,
+        "observation": "null",
+        "partner": "Visa F",
+        "round": 2,
+        "status": "Open"
+    },
+    {
+        "vacancyName": "Room/ Waterpark Attendant",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Room Attendant",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 2,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Room/ Waterpark Attendant",
+        "vacantLocation": "null",
+        "vacancies": 95,
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 3,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Cook/Dishwasher/Line Cook/ Prep Cook",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "CRM",
+        "stakeholder": "Mauricio Rojas",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Cook/Line Cook/ Prep Cook",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "CRM",
+        "stakeholder": "Mauricio Rojas",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Cook/Dishwasher/Host",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Schola",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Vehicle Detailer",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Long Haul Driver",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Yes Van City",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "General Labor",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Sales Clerk/Warehouse Clerk",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "CRM",
+        "stakeholder": "Mauricio Rojas",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Sales Clerk/Warehouse Clerk",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "CRM",
+        "stakeholder": "Mauricio Rojas",
+        "round": 2,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "General Labor",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "CRM",
+        "stakeholder": "Mauricio Rojas",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "General Labor",
+        "vacantLocation": "null",
+        "vacancies": 75,
+        "observation": "null",
+        "partner": "CRM",
+        "stakeholder": "Mauricio Rojas",
+        "round": 2,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Sandwich Artist",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Cook/Dishwasher/cashier",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Schola",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Front Desk/ House Keeping/ Maintenance",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "CRM",
+        "stakeholder": "Mauricio Rojas",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Front Desk/ House Keeping/ Maintenance",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "CRM",
+        "stakeholder": "Mauricio Rojas",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Assembler",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Assembler",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 2,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Assembler",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 3,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Assembler",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 5,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Assembler",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 6,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Assembler",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 7,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Assembler",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 8,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Assembler",
+        "vacantLocation": "null",
+        "vacancies": 200,
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 9,
+        "status": "Open"
+    },
+    {
+        "vacancyName": "Sandwich Artist",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Sandwich Artist",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Sandwich Artist",
+        "vacantLocation": "Wisconsin",
+        "vacancies": 100,
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 2,
+        "status": "Open"
+    },
+    {
+        "vacancyName": "Sandwich Artist",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Sandwich Artist",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Prep Cook/ Server",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "CRM",
+        "stakeholder": "Mauricio Rojas",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Machine Operator",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "MCC",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Production Helper",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "CRM",
+        "stakeholder": "Mauricio Rojas",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Production Helper",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "CRM",
+        "stakeholder": "Mauricio Rojas",
+        "round": 2,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "General Labor",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "General Labor/ Vehicle Detailer",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 2,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Warehouse Clerk",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "CRM",
+        "stakeholder": "Mauricio Rojas",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "General Labor",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "General Labor",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 2,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Roon Attendant/ Water Park/Line & Prep Cook",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 1,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Roon Attendant/ Water Park/Line & Prep Cook",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 2,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Roon Attendant/ Water Park/Line & Prep Cook",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 3,
+        "status": "Close"
+    },
+    {
+        "vacancyName": "Roon Attendant/ Water Park/Line & Prep Cook",
+        "vacantLocation": "null",
+        "observation": "null",
+        "partner": "Francisco",
+        "stakeholder": "Zac",
+        "stakeholderEmail": "zac@keryluk.com",
+        "round": 4,
+        "status": "Close"
+    }
+]

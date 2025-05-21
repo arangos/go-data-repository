@@ -1,0 +1,84 @@
+databaseChangeLog:
+  - changeSet:
+      id: baseline-client
+      author: andres.arango
+      changes:
+        - createTable:
+            tableName: CLIENT
+            columns:
+              - column:
+                    name: EMAIL
+                    type: varchar(255)
+                    constraints:
+                      unique: true
+                      nullable: false
+              - column:
+                  name: DNI
+                  type: varchar(255)
+              - column:
+                  name: FIRST_NAME
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: LAST_NAME
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: COUNTRY_CODE
+                  type: varchar(255)
+              - column:
+                  name: PHONE
+                  type: varchar(25)
+              - column:
+                  name: RESIDENCE_COUNTRY
+                  type: varchar(255)
+              - column:
+                  name: RESIDENCE_CITY
+                  type: varchar(255)
+              - column:
+                  name: LINK_YEAR
+                  type: int
+              - column:
+                  name: LINK_MONTH
+                  type: int
+              - column:
+                  name: PAYMENT_PLAN
+                  type: varchar(255)
+              - column:
+                  name: CONTRACTED_VALUE
+                  type: decimal
+              - column:
+                  name: COMMERCIAL_AGENCY
+                  type: varchar(255)
+              - column:
+                  name: REFERRED
+                  type: varchar(255)
+              - column:
+                  name: STATUS
+                  type: varchar(255)
+              - column:
+                  name: CLIENT_TYPE
+                  type: varchar(40)
+              - column:
+                  name: CLIENT_CATEGORY
+                  type: varchar(90)
+              - column:
+                  name: CREATED_BY
+                  type: varchar(255)
+              - column:
+                  name: CREATED_DATE
+                  type: timestamp
+              - column:
+                  name: LAST_MODIFIED_BY
+                  type: varchar(255)
+              - column:
+                  name: LAST_MODIFIED_DATE
+                  type: timestamp
+              - column:
+                  name: DELETED
+                  type: boolean
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false

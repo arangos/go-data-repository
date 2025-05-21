@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <!-- Add change requests below this line. -->
+
+    <changeSet id="sponsor-1.1" author="andres.echeverri">
+        <comment>added PARTNER,STAKEHOLDER and STAKEHOLDER_EMAIL columns to sponsor</comment>
+        <sql>
+            <![CDATA[
+            ALTER TABLE postgres.sponsor
+            ADD COLUMN PARTNER VARCHAR(100),
+            ADD COLUMN STAKEHOLDER VARCHAR(100),
+            ADD COLUMN STAKEHOLDER_EMAIL VARCHAR(100);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="sponsor-aud-1.1" author="andres.echeverri">
+        <comment>added PARTNER,STAKEHOLDER and STAKEHOLDER_EMAIL columns to sponsor</comment>
+        <sql>
+            <![CDATA[
+            ALTER TABLE postgres.sponsor_aud
+            ADD COLUMN PARTNER VARCHAR(100),
+            ADD COLUMN STAKEHOLDER VARCHAR(100),
+            ADD COLUMN STAKEHOLDER_EMAIL VARCHAR(100);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="sponsor-1.2" author="andres.echeverri">
+        <comment>dropped columns from sponsor</comment>
+        <sql>
+            <![CDATA[
+            ALTER TABLE postgres.sponsor
+            DROP COLUMN VACANCY_NAME,
+            DROP COLUMN VACANT_LOCATION,
+            DROP COLUMN PROJECTED_DATE_WINDOW_OPENING,
+            DROP COLUMN PROJECTED_CLOSING_DATE,
+            DROP COLUMN VACANCIES,
+            DROP COLUMN RELEASE_DATE,
+            DROP COLUMN RECRUITMENT_CLOSING_DATE,
+            DROP COLUMN OBSERVATION,
+            DROP COLUMN PARTNER,
+            DROP COLUMN STAKEHOLDER,
+            DROP COLUMN ROUND,
+            DROP COLUMN STATUS,
+            DROP COLUMN STAKEHOLDER_EMAIL;
+            ]]>
+        </sql>
+    </changeSet>
+    <changeSet id="sponsor-aud-1.2" author="andres.echeverri">
+        <comment>dropped columns from sponsor_aud</comment>
+        <sql>
+            <![CDATA[
+            ALTER TABLE postgres.sponsor_aud
+            DROP COLUMN VACANCY_NAME,
+            DROP COLUMN VACANT_LOCATION,
+            DROP COLUMN PROJECTED_DATE_WINDOW_OPENING,
+            DROP COLUMN PROJECTED_CLOSING_DATE,
+            DROP COLUMN VACANCIES,
+            DROP COLUMN RELEASE_DATE,
+            DROP COLUMN RECRUITMENT_CLOSING_DATE,
+            DROP COLUMN OBSERVATION,
+            DROP COLUMN PARTNER,
+            DROP COLUMN STAKEHOLDER,
+            DROP COLUMN ROUND,
+            DROP COLUMN STATUS,
+            DROP COLUMN STAKEHOLDER_EMAIL;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="sponsor-aud-1.3" author="andres.arango">
+        <comment>remove constraint invoice_aud_pkey to sponsor-aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.sponsor_aud DROP CONSTRAINT sponsor_aud_pkey;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="sponsor-1.3" author="andres.arango">
+        <comment>add column SPONSOR_JOB_APPLICATION_DESCRIPTION to sponsor table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.sponsor ADD COLUMN SPONSOR_JOB_APPLICATION_DESCRIPTION VARCHAR(1000);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="sponsor-aud-1.4" author="andres.arango">
+        <comment>add column SPONSOR_JOB_APPLICATION_DESCRIPTION to sponsor_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.sponsor_aud ADD COLUMN SPONSOR_JOB_APPLICATION_DESCRIPTION VARCHAR(1000);
+            ]]>
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

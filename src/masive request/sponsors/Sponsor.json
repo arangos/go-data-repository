@@ -1,0 +1,185 @@
+[
+    {
+        "sponsorName": "Wilderness",
+        "sponsorLocation": "Wisconsin Dells, WI",
+        "sponsorContact": "Abigael Horkan",
+        "sponsorEmail": "ahorkan@wildernessresort.com"
+    },
+    {
+        "sponsorName": "Gator's Dockside",
+        "sponsorLocation": "Orlando, FL",
+        "sponsorContact": "Bill Matthews",
+        "sponsorEmail": "billmatthews@gatorsdockside.com"
+    },
+    {
+        "sponsorName": "BrightStar South Orange",
+        "sponsorLocation": "Mission Viejo, CA",
+        "sponsorContact": "Mark and Claire Woodsum",
+        "sponsorEmail": "Claire.Woodsum@brightstarcare.com"
+    },
+    {
+        "sponsorName": "IHOP",
+        "sponsorLocation": "Jacksonville, FL",
+        "sponsorContact": "Claudia Rodriguez",
+        "sponsorEmail": "crodriguez@srpihop.com"
+    },
+    {
+        "sponsorName": "Sonny's BBQ",
+        "sponsorLocation": "Tallahassee, FL",
+        "sponsorContact": "Claudia Rodriguez",
+        "sponsorEmail": "crodriguez@srpihop.com"
+    },
+    {
+        "sponsorName": "Subway Alaska",
+        "sponsorLocation": "Anchorage, AK",
+        "sponsorContact": "Chris Wilson",
+        "sponsorEmail": "cwilson@subwayak.com"
+    },
+    {
+        "sponsorName": "Karst Stage",
+        "sponsorLocation": "Bozeman, MT",
+        "sponsorContact": "Dan Martin",
+        "sponsorEmail": "dmartin@karststage.com"
+    },
+    {
+        "sponsorName": "Anderson Coach",
+        "sponsorLocation": "Greenville, PA",
+        "sponsorContact": "Evan Anderson",
+        "sponsorEmail": "eanderson@goanderson.com"
+    },
+    {
+        "sponsorName": "Quality",
+        "sponsorLocation": "Leigh Acres, FL",
+        "sponsorContact": "Girish \"greg\" Patel",
+        "sponsorEmail": "g.patel@stealthmanage.com"
+    },
+    {
+        "sponsorName": "US Apparel",
+        "sponsorLocation": "Orlando, FL",
+        "sponsorContact": "Imran Vorajee",
+        "sponsorEmail": "imran@usapparelonline.com"
+    },
+    {
+        "sponsorName": "Subway Indiana",
+        "sponsorLocation": "Merrillville, IN",
+        "sponsorContact": "Joann Bachewicz",
+        "sponsorEmail": "joannbachewicz@gmail.com"
+    },
+    {
+        "sponsorName": "Badger Bus",
+        "sponsorLocation": "Madison, WI",
+        "sponsorContact": "John Meier",
+        "sponsorEmail": "johnm@badgerbus.com"
+    },
+    {
+        "sponsorName": "UW Provisions",
+        "sponsorLocation": "Middleton, WI",
+        "sponsorContact": "Juan Roa",
+        "sponsorEmail": "Juan.Roa@uwprovision.com"
+    },
+    {
+        "sponsorName": "Chula Vista",
+        "sponsorLocation": "Wisconsin Dells, WI",
+        "sponsorContact": "Karen Reith-Hinze",
+        "sponsorEmail": "karenr@chulavistaresort.com"
+    },
+    {
+        "sponsorName": "TC Transcontinental",
+        "sponsorLocation": "Montreal, QC, Canada",
+        "sponsorContact": "Kerry Wynn",
+        "sponsorEmail": "Kerry.wynn@tc.tc"
+    },
+    {
+        "sponsorName": "TNT",
+        "sponsorLocation": "Leesburg, FL",
+        "sponsorContact": "Lourdes McAgy",
+        "sponsorEmail": "lmcagy@tntsupplements.com"
+    },
+    {
+        "sponsorName": "AA Transportation",
+        "sponsorLocation": "Shrewsbury, MA",
+        "sponsorContact": "Lori Ciccarelli",
+        "sponsorEmail": "lorib@aatransportation.com"
+    },
+    {
+        "sponsorName": "TNT",
+        "sponsorLocation": "Leesburg, FL",
+        "sponsorContact": "Litza Rodriguez",
+        "sponsorEmail": "lrodriguez@tntsupplements.com"
+    },
+    {
+        "sponsorName": "OC Metals",
+        "sponsorLocation": "Santa Ana, CA",
+        "sponsorContact": "Mari Kurtz",
+        "sponsorEmail": "mari@ocmetals.com"
+    },
+    {
+        "sponsorName": "TravelKuz",
+        "sponsorLocation": "Gill, MA",
+        "sponsorContact": "Michael Doyle",
+        "sponsorEmail": "mdoyle@travelkuz.com"
+    },
+    {
+        "sponsorName": "Rassy Logistics",
+        "sponsorLocation": "Orlando, FL",
+        "sponsorContact": "Michel El-Rassy",
+        "sponsorEmail": "michel.elrassy@rassylogistics.com "
+    },
+    {
+        "sponsorName": "Stoughton",
+        "sponsorLocation": "Stoughton, WI",
+        "sponsorContact": "Madeline Wright",
+        "sponsorEmail": "mwright@stoughtontrailers.com"
+    },
+    {
+        "sponsorName": "Clarion",
+        "sponsorLocation": "Orlando, FL",
+        "sponsorContact": "Nora Jain",
+        "sponsorEmail": "n.jain@tablacuisine.com "
+    },
+    {
+        "sponsorName": "Tabla",
+        "sponsorLocation": "Orlando, FL",
+        "sponsorContact": "Nora Jain",
+        "sponsorEmail": "n.jain@tablacuisine.com "
+    },
+    {
+        "sponsorName": "Hawkers",
+        "sponsorLocation": "Jacksonville, FL",
+        "sponsorContact": "Robyn Clonts",
+        "sponsorEmail": "rclonts@eathawkers.com"
+    },
+    {
+        "sponsorName": "Marathon Xpress",
+        "sponsorLocation": "Miami, FL",
+        "sponsorContact": "Reinel Maje",
+        "sponsorEmail": "Reinel@marathonxpressinc.com "
+    },
+    {
+        "sponsorName": "OceanAir",
+        "sponsorLocation": "Orlando, FL",
+        "sponsorContact": "Samia Ahmed",
+        "sponsorEmail": "sahmed@oceanairenterprises.com"
+    },
+    {
+        "sponsorName": "Subway Midnight (alaska)",
+        "sponsorLocation": "Anchorage, AK",
+        "sponsorContact": "Sharae Keeney",
+        "sponsorEmail": "skeeney@fbxsubway.com"
+    },
+    {
+        "sponsorName": "BrightStar Conejo Valley",
+        "sponsorLocation": "Westlake Village, CA",
+        "sponsorContact": "Stephanie Guggenheim",
+        "sponsorEmail": "Stephanie.Guggenheim@brightstarcare.com"
+    },
+    {
+        "sponsorName": "Subway Buckley",
+        "sponsorLocation": "Green Bay, WI",
+        "sponsorContact": "Tammy Hanaway",
+        "sponsorEmail": "thanaway@subrock.us"
+    },
+    {
+        "sponsorName": "Restaurex"
+    }
+]

@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: addColumn-eligibility
+      author: julian.ramirez
+      changes:
+        - addColumn:
+            tableName: CLIENT_AUD
+            columns:
+              - column:
+                  name: ELIGIBLE
+                  type: boolean

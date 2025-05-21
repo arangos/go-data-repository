@@ -1,0 +1,7 @@
+databaseChangeLog:
+- changeSet:
+    id: create-job-application-seq
+    author: andres.arango
+    changes:
+      - sql:
+          sql: CREATE SEQUENCE job_application_seq START WITH 1 INCREMENT BY 1;

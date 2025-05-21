@@ -1,0 +1,7 @@
+databaseChangeLog:
+- changeSet:
+    id: create-sponsor-seq
+    author: andres.arango
+    changes:
+      - sql:
+          sql: CREATE SEQUENCE sponsor_seq START WITH 1 INCREMENT BY 1;

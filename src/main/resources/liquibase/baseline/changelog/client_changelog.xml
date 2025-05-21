@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <!-- CHANGESET TEMPLATE
+    <changeSet id="[[cr number (ticket number # change letter)]]" author="[[author name]]" context="[[schema|data]]">
+    <comment>[[Description of Change]]</comment>
+    <sql>
+                <![CDATA[
+        - data or schema change sql -
+                ]]>
+    </sql>
+    </changeSet>
+    -->
+
+    <!-- Add change requests below this line. -->
+    <changeSet id="client-1.3" author="andres.arango">
+        <comment>Add stage column for client table and client aud table</comment>
+        <sql>
+            <![CDATA[
+            ALTER TABLE postgres.client ADD COLUMN STAGE VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-aud-1.3" author="andres.arango">
+        <comment>Add stage column for client table and client aud table</comment>
+        <sql>
+            <![CDATA[
+            ALTER TABLE postgres.client_aud ADD COLUMN STAGE VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-1.4" author="andres.echeverri">
+        <comment>Add referral and referferor column for client table and client aud table</comment>
+        <sql>
+            <![CDATA[
+            ALTER TABLE postgres.client 
+            ADD COLUMN UTM_REFERRAL_ROCK BOOLEAN DEFAULT FALSE NOT NULL,
+            ADD COLUMN UTM_REFERRAL_ROCK_TYPE VARCHAR(255),
+            ADD COLUMN UTM_REFERRAL_ROCK_CODE VARCHAR(255),
+            ADD COLUMN UTM_REFERFEROR_NAME VARCHAR(255),
+            ADD COLUMN UTM_REFERFEROR_EMAIL VARCHAR(255),
+            ADD COLUMN LANDING VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-aud-1.4" author="andres.echeverri">
+        <comment>Add referral and referferor column for client table and client aud table</comment>
+        <sql>
+            <![CDATA[
+            ALTER TABLE postgres.client_aud 
+            ADD COLUMN UTM_REFERRAL_ROCK BOOLEAN,
+            ADD COLUMN UTM_REFERRAL_ROCK_TYPE VARCHAR(255),
+            ADD COLUMN UTM_REFERRAL_ROCK_CODE VARCHAR(255),
+            ADD COLUMN UTM_REFERFEROR_NAME VARCHAR(255),
+            ADD COLUMN UTM_REFERFEROR_EMAIL VARCHAR(255),
+            ADD COLUMN LANDING VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-1.5" author="andres.echeverri">
+        <comment>Add company and vacancy column for client table and client aud table</comment>
+        <sql>
+            <![CDATA[
+            ALTER TABLE postgres.client 
+            ADD COLUMN COMPANY VARCHAR(255),
+            ADD COLUMN VACANCY VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-aud-1.5" author="andres.echeverri">
+        <comment>Add company and vacancy column for client table and client aud table</comment>
+        <sql>
+            <![CDATA[
+            ALTER TABLE postgres.client_aud 
+            ADD COLUMN COMPANY VARCHAR(255),
+            ADD COLUMN VACANCY VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-1.6" author="daniel.morales">
+        <comment>Add cv URL document column for client table and client aud table</comment>
+        <sql>
+            <![CDATA[
+            ALTER TABLE postgres.client
+                ADD COLUMN CV_URL VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-aud-1.6" author="daniel.morales">
+        <comment>Add cv URL document column for client table and client aud table</comment>
+        <sql>
+            <![CDATA[
+            ALTER TABLE postgres.client_aud
+                ADD COLUMN CV_URL VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-1.7" author="andres.echeverri">
+        <comment>Add English Level column for client table and client aud table</comment>
+        <sql>
+            <![CDATA[
+            ALTER TABLE postgres.client_aud
+            ADD COLUMN ENGLISH_LEVEL VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-aud-1.7" author="andres.echeverri">
+        <comment>Add English Level column for client table and client aud table</comment>
+        <sql>
+            <![CDATA[
+            ALTER TABLE postgres.client 
+            ADD COLUMN ENGLISH_LEVEL VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-1.8" author="andres.arango">
+        <comment>Add email validated column for client table</comment>
+        <sql>
+            <![CDATA[
+            ALTER TABLE postgres.client
+                ADD COLUMN EMAIL_VALIDATED BOOLEAN DEFAULT FALSE NOT NULL;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-aud-1.8" author="andres.arango">
+        <comment>Add email validated column for client aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_aud
+                ADD COLUMN EMAIL_VALIDATED BOOLEAN DEFAULT FALSE NOT NULL;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-1.8" author="andres.echeverri">
+        <comment>Add SECOND NAME and SECOND LAST NAME column for client table and client aud table</comment>
+        <sql>
+            <![CDATA[
+            ALTER TABLE postgres.client_aud
+            ADD COLUMN SECOND_NAME VARCHAR(255),
+            ADD COLUMN SECOND_LAST_NAME VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-aud-1.8" author="andres.echeverri">
+        <comment>Add SECOND NAME and SECOND LAST NAME column for client table and client aud table</comment>
+        <sql>
+            <![CDATA[
+            ALTER TABLE postgres.client 
+            ADD COLUMN SECOND_NAME VARCHAR(255),
+            ADD COLUMN SECOND_LAST_NAME VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-1.9" author="andres.arango">
+        <comment>rename dni for passport in client table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client RENAME COLUMN dni TO passport;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-aud-1.9" author="andres.arango">
+        <comment>rename dni for passport in client table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_aud RENAME COLUMN dni TO passport;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-2.0" author="andres.arango">
+        <comment>Rename commercialAgency to agency in client table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client RENAME COLUMN commercial_agency TO agency;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-aud-2.0" author="andres.arango">
+        <comment>Rename commercialAgency to agency in client_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_aud RENAME COLUMN commercial_agency TO agency;
+                ]]>
+        </sql>
+    </changeSet>
+    <changeSet id="client-aud-2.1" author="andres.echeverri">
+        <comment>Added sponsor related columns to client-aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_aud
+                RENAME COLUMN COMPANY TO SPONSOR;
+                ALTER TABLE postgres.client_aud
+                ADD COLUMN COMPLETED_NAME VARCHAR(255),
+                ADD COLUMN RONDA INT,
+                ADD COLUMN CUSTOMER_CODE VARCHAR(255),
+                ADD COLUMN JOB_TITLE VARCHAR(255),
+                ADD COLUMN GENDER VARCHAR(255),
+                ADD COLUMN NATIONALITY VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-2.1" author="andres.echeverri">
+        <comment>Added sponsor related columns to client table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client
+                RENAME COLUMN COMPANY TO SPONSOR;
+                ALTER TABLE postgres.client
+                ADD COLUMN COMPLETED_NAME VARCHAR(255),
+                ADD COLUMN RONDA INT,
+                ADD COLUMN CUSTOMER_CODE VARCHAR(255),
+                ADD COLUMN JOB_TITLE VARCHAR(255),
+                ADD COLUMN GENDER VARCHAR(255),
+                ADD COLUMN NATIONALITY VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-2.1" author="andres.arango">
+        <comment>Drop old primary key "client_email_key" and add new primary key</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE client DROP CONSTRAINT client_email_key;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-2.2" author="andres.arango">
+        <comment>Add new primary key</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE client ADD CONSTRAINT pk_customer_code_client PRIMARY KEY (CUSTOMER_CODE);
+            ]]>
+         </sql>
+    </changeSet>
+
+    <changeSet id="client-2.3" author="andres.arango">
+        <comment>Add new sequence for clients table</comment>
+        <sql>
+            <![CDATA[
+                CREATE SEQUENCE customer_code_client_seq;
+            ]]>
+         </sql>
+    </changeSet>
+
+    <changeSet id="client-2.4" author="andres-arango">
+        <comment>Add unique constraint to email column in client table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client ADD CONSTRAINT email_unique UNIQUE (email);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-2.5" author="andres.arango">
+        <comment>Add ACTIVE_CAMPAIGN_ID column for client table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client
+                ADD COLUMN ACTIVE_CAMPAIGN_ID BIGINT;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-aud-2.5" author="andres.arango">
+        <comment>Add ACTIVE_CAMPAIGN_ID column for client aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_aud
+                ADD COLUMN ACTIVE_CAMPAIGN_ID BIGINT;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-aud-2.6" author="andres.arango">
+        <comment>Refactor email validated column for client aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_aud
+                ALTER COLUMN EMAIL_VALIDATED DROP NOT NULL;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-2.6" author="andres.arango">
+        <comment>Create indexes for first_name and email columns in client table</comment>
+        <sql>
+            <![CDATA[
+                CREATE INDEX idx_client_first_name ON postgres.client(first_name);
+                CREATE INDEX idx_client_email ON postgres.client(email);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-2.7" author="andres.arango">
+        <comment>Rename job_title to contract_type in client table</comment>
+        <sql>
+        <![CDATA[
+                ALTER TABLE postgres.client
+                RENAME COLUMN job_title TO contract_type;
+            ]]>
+    </sql>
+    </changeSet>
+
+    <changeSet id="client-aud-2.7" author="andres.arango">
+        <comment>Rename job_title to contract_type in client aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_aud
+                RENAME COLUMN job_title TO contract_type;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-2.8" author="andres.arango">
+        <comment>Rename payment_plan to payment_invoice in client table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client
+                RENAME COLUMN payment_plan TO payment_invoice;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-aud-2.8" author="andres.arango">
+        <comment>Rename payment_plan to payment_invoice in client aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_aud
+                RENAME COLUMN payment_plan TO payment_invoice;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-2.9" author="andres.arango">
+        <comment>Refactor link_year and link_month columns to invoice_date and invoice_payment_date in client table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client
+                RENAME COLUMN link_year TO invoice_date;
+                ALTER TABLE postgres.client
+                RENAME COLUMN link_month TO invoice_payment_date;
+                ALTER TABLE postgres.client
+                ALTER COLUMN invoice_date TYPE TIMESTAMP USING to_timestamp(invoice_date);
+                ALTER TABLE postgres.client
+                ALTER COLUMN invoice_payment_date TYPE TIMESTAMP USING to_timestamp(invoice_payment_date);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-aud-2.9" author="andres.arango">
+        <comment>Refactor link_year and link_month columns to invoice_date and invoice_payment_date in client_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_aud
+                RENAME COLUMN link_year TO invoice_date;
+                ALTER TABLE postgres.client_aud
+                RENAME COLUMN link_month TO invoice_payment_date;
+                ALTER TABLE postgres.client_aud
+                ALTER COLUMN invoice_date TYPE TIMESTAMP USING to_timestamp(invoice_date);
+                ALTER TABLE postgres.client_aud
+                ALTER COLUMN invoice_payment_date TYPE TIMESTAMP USING to_timestamp(invoice_payment_date);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-3.0" author="andres.arango">
+        <comment>Refactor contracted_value and referred columns in client table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client
+                RENAME COLUMN contracted_value TO invoice_payment_type;
+                ALTER TABLE postgres.client
+                RENAME COLUMN referred TO invoice_payment_comment;
+                ALTER TABLE postgres.client
+                ALTER COLUMN invoice_payment_type TYPE VARCHAR(255);
+                ALTER TABLE postgres.client
+                ALTER COLUMN invoice_payment_comment TYPE VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-aud-3.0" author="andres.arango">
+        <comment>Refactor contracted_value and referred columns in client_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_aud
+                RENAME COLUMN contracted_value TO invoice_payment_type;
+                ALTER TABLE postgres.client_aud
+                RENAME COLUMN referred TO invoice_payment_comment;
+                ALTER TABLE postgres.client_aud
+                ALTER COLUMN invoice_payment_type TYPE VARCHAR(255);
+                ALTER TABLE postgres.client_aud
+                ALTER COLUMN invoice_payment_comment TYPE VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-3.1" author="andres.arango">
+        <comment>Refactor invoice_date column to invoice_created_date in client table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client
+                RENAME COLUMN invoice_date TO invoice_created_date;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-aud-3.1" author="andres.arango">
+        <comment>Refactor invoice_date column to invoice_created_date in client_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_aud
+                RENAME COLUMN invoice_date TO invoice_created_date;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-3.2" author="andres.arango">
+        <comment>Add invoice_amount_paid and deal_owner columns to client table</comment>
+        <sql>
+        <![CDATA[
+                ALTER TABLE postgres.client
+                ADD COLUMN INVOICE_AMOUNT_PAID BIGINT,
+                ADD COLUMN DEAL_OWNER VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-aud-3.2" author="andres.arango">
+        <comment>Add invoice_amount_paid and deal_owner columns to client_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_aud
+                ADD COLUMN INVOICE_AMOUNT_PAID BIGINT,
+                ADD COLUMN DEAL_OWNER VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-3.3" author="andres.arango">
+        <comment>Drop columns from client table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client
+                DROP COLUMN invoice_created_date,
+                DROP COLUMN invoice_payment_date,
+                DROP COLUMN payment_invoice,
+                DROP COLUMN invoice_payment_type,
+                DROP COLUMN invoice_payment_comment,
+                DROP COLUMN invoice_amount_paid;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-aud-3.3" author="andres.arango">
+        <comment>Drop columns from client_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_aud
+                DROP COLUMN invoice_created_date,
+                DROP COLUMN invoice_payment_date,
+                DROP COLUMN payment_invoice,
+                DROP COLUMN invoice_payment_type,
+                DROP COLUMN invoice_payment_comment,
+                DROP COLUMN invoice_amount_paid;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-3.4" author="andres.arango">
+        <comment>Drop old primary key "pk_customer_code_client"</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client DROP CONSTRAINT pk_customer_code_client;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-3.5" author="andres.arango">
+        <comment>Drop not null constraint from client table since now agencies clients can have taht null</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client ALTER COLUMN customer_code DROP NOT NULL;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-3.6" author="andres.arango">
+        <comment>Create indexes for customer_code and client_customer_code_agency in client table</comment>
+        <sql>
+            <![CDATA[
+                CREATE INDEX idx_client_customer_code ON postgres.client (customer_code);
+                CREATE INDEX idx_client_customer_code_agency ON postgres.client (customer_code, agency);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-3.7" author="andres.arango">
+        <comment>Create indexes for created_date in client table</comment>
+        <sql>
+            <![CDATA[
+                CREATE INDEX idx_client_customer_code_created_date ON postgres.client (customer_code, created_date);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-3.8" author="andres.arango">
+        <comment>Remove not null constraint for email in client table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client
+                ALTER COLUMN email DROP NOT NULL;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-3.9" author="andres.arango">
+        <comment>Add DEAL_OWNER_NAME column to client table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client
+                ADD COLUMN DEAL_OWNER_NAME VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-aud-3.9" author="andres.arango">
+        <comment>Add DEAL_OWNER_NAME column to client-aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_aud
+                ADD COLUMN DEAL_OWNER_NAME VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

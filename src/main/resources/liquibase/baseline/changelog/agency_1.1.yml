@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: addColumn-agency-version
+      author: andres.echeverri
+      changes:
+        - addColumn:
+            tableName: AGENCY
+            columns:
+              - column:
+                  name: AGENCY_VERSION
+                  type: varchar(255)
+                  constraints:
+                    nullable: true 

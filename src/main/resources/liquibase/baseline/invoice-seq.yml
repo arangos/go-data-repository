@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-invoice-seq
+      author: andres.arango
+      changes:
+        - sql:
+            sql: CREATE SEQUENCE invoice_seq START WITH 1 INCREMENT BY 1;

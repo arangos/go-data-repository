@@ -1,0 +1,7 @@
+databaseChangeLog:
+- changeSet:
+    id: create-calendly-seq
+    author: andres.arango
+    changes:
+      - sql:
+          sql: CREATE SEQUENCE calendly_seq START WITH 1 INCREMENT BY 1;

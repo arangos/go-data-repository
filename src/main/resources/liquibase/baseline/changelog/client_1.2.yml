@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: addColumns-client-utm
+      author: andres.echeverri
+      changes:
+        - addColumn:
+            tableName: CLIENT
+            columns:
+              - column:
+                  name: UTM_SOURCE
+                  type: varchar(255)
+                  constraints:
+                    nullable: true 
+              - column:
+                  name: UTM_MEDIUM
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: UTM_CAMPAIGN
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: UTM_TERM
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: UTM_CONTENT
+                  type: varchar(255)
+                  constraints:
+                    nullable: true

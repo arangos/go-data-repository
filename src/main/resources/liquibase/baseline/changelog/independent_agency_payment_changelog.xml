@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="independent_agency_payment-1.0" author="andres-arango">
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.independent_agency_payment ADD COLUMN status VARCHAR(255);
+                ALTER TABLE postgres.independent_agency_payment ADD COLUMN suggested_name_dropdown VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - changeSet:
+      id: independent_agency_payment-table
+      author: andres.arango
+      changes:
+        - createTable:
+            tableName: independent_agency_payment
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: classification
+                  type: VARCHAR(255)
+              - column:
+                  name: agency_name
+                  type: VARCHAR(255)
+              - column:
+                  name: agency_code
+                  type: VARCHAR(255)
+              - column:
+                  name: planOfPayment
+                  type: INTEGER
+              - column:
+                  name: installment1
+                  type: BIGINT
+              - column:
+                  name: installment2
+                  type: BIGINT
+              - column:
+                  name: installment3
+                  type: BIGINT
+              - column:
+                  name: installment4
+                  type: BIGINT
+              - column:
+                  name: comments
+                  type: VARCHAR(255)

@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-contract-seq
+      author: daniel.morales
+      changes:
+        - sql:
+            sql: CREATE SEQUENCE contract_seq START WITH 1 INCREMENT BY 1;

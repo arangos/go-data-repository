@@ -1,0 +1,235 @@
+databaseChangeLog:
+
+  - include:
+      file: baseline/client.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/client-aud.yml
+      relativeToChangelogFile: true
+
+  - changeSet:
+      id: baseline-revinfo
+      author: andres.arango
+      changes:
+        - sqlFile:
+            path: baseline/revinfo.sql
+            endDelimiter: ";"
+            relativeToChangelogFile: true
+
+  - changeSet:
+      id: baseline-revchanges
+      author: andres.arango
+      changes:
+        - sqlFile:
+            path: baseline/revchanges.sql
+            endDelimiter: ";"
+            relativeToChangelogFile: true
+
+  - include:
+      file: baseline/changelog/client_1.1.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/changelog/client_aud_1.1.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/agency.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/agency-auditory.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/changelog/client_1.2.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/changelog/client_aud_1.2.yml
+      relativeToChangelogFile: true
+      
+  - include:
+      file: baseline/changelog/agency_1.1.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/changelog/agency_aud_1.1.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/changelog/client_changelog.xml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/changelog/agency_changelog.xml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/job-application-seq.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/job-application.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/job-application-aud.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/changelog/job-application_changelog.xml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/sponsor-seq.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/sponsor.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/sponsor-auditory.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/calendly-seq.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/calendly-event.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/calendly-event-auditory.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/changelog/sponsor_changelog.xml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/vacancie.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/vacancie-auditory.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/vacancie-seq.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/changelog/vacancies_changelog.xml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/client-form-seq.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/client-form.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/client-form-auditory.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/contract-seq.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/contract.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/contract-aud.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/changelog/contract_changelog.xml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/changelog/client-form_changelog.xml
+      relativeToChangelogFile: true
+      
+  - include:    
+      file: baseline/consultants.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/consultants-seq.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/changelog/consultants_changelog.xml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/consultants-aud.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/contract_types_seq.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/contract_types.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/invoice-seq.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/invoice.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/invoice-aud.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/changelog/contract_type_changelog.xml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/changelog/invoice_changelog.xml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/docusign-envelope_seq.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/docusign-envelope.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/changelog/calendly_changelog.xml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/changelog/docusign_envelope_changelog.xml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/independent_agency_payment_seq.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/independent_agency_payment.yml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/changelog/independent_agency_payment_changelog.xml
+      relativeToChangelogFile: true
+
+  - include:
+      file: baseline/allowed_contract_updates.yml
+      relativeToChangelogFile: true

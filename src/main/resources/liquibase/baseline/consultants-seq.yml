@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-consultants-seq
+      author: andres.echeverri
+      changes:
+        - sql:
+            sql: CREATE SEQUENCE consultants_seq START WITH 1 INCREMENT BY 1;

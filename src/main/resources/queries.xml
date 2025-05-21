@@ -1,0 +1,164 @@
+<queries>
+
+    <query id="findAllowedContractsToUpdate">
+        <![CDATA[
+            SELECT c.*
+            FROM postgres.contract_types c
+            JOIN postgres.allowed_contract_updates acu ON c.id = acu.allowed_contract_id
+            WHERE acu.current_contract_id = (SELECT id from postgres.contract_types where contract_type = :currentContractType)
+            AND CURRENT_DATE BETWEEN acu.start_date AND acu.end_date
+            ORDER BY c.id ASC
+        ]]>
+    </query>
+
+    <query id="findAllowedContractsToUpdateSpecialSponsorsNonReferral">
+        <![CDATA[
+            SELECT c.*
+            FROM postgres.contract_types c
+            WHERE c.id IN (16, 17)
+            ORDER BY c.id ASC
+        ]]>
+    </query>
+
+    <query id="findAllowedContractsToUpdateSpecialSponsorsReferral">
+        <![CDATA[
+            SELECT c.*
+            FROM postgres.contract_types c
+            WHERE c.id IN (14, 15)
+            ORDER BY c.id ASC
+        ]]>
+    </query>
+
+    <query id="findAllowedContractsToCreateReferralAgencyClient">
+        <![CDATA[
+            SELECT c.*
+            FROM postgres.contract_types c
+            WHERE c.id in (5,10,11,18)
+            ORDER BY c.id ASC
+        ]]>
+    </query>
+
+    <query id="findAllowedContractsForColumbusAgency">
+        <![CDATA[
+            SELECT c.*
+            FROM postgres.contract_types c
+            WHERE c.id in (2,3)
+            ORDER BY c.id ASC
+        ]]>
+    </query>
+
+    <query id="findAgencyClientsByAgencyEmail">
+        <![CDATA[
+            SELECT cl.*, j.id as job_application_id, j.*, j.creation_date as job_application_created_date, j.created_by as job_application_created_by,
+            j.approval_date as job_application_approval_date, j.mccusa_approved_check as job_application_mccusa_approved_check, j.agency_approved_check as job_application_agency_approved_check,
+            c.id AS contract_id, c.*, c.created_by as contract_created_by, c.creation_date as contract_created_date, c.job_application_id as contract_job_application_id,
+            cf.id as client_form_id, c.mccusa_approved_check as contract_mccusa_approved_check, c.agency_approved_check as contract_agency_approved_check,
+            cf.created_by as client_form_created_by, cf.created_date as client_form_created_date, cf.mccusa_approved_check as client_form_mccusa_approved_check,
+            cf.agency_approved_check as client_form_agency_approved_check, i.id as invoice_id, i.job_application_id as invoice_job_application_id,
+            i.*, j.aws_documents as job_aws_documents, c.aws_documents as contract_aws_documents
+            FROM postgres.client cl
+            LEFT JOIN postgres.job_application j ON j.customer_code = cl.customer_code AND cl.customer_code IS NOT NULL
+            LEFT JOIN postgres.contract c ON c.customer_code = cl.customer_code AND cl.customer_code IS NOT NULL AND c.job_application_id = j.id
+            LEFT JOIN postgres.client_form cf ON cf.customer_code = cl.customer_code and cf.job_application_id = j.id AND cl.customer_code IS NOT NULL
+            LEFT JOIN postgres.invoice i ON i.customer_code = cl.customer_code AND (i.job_application_id IS NULL OR i.job_application_id = j.id) AND cl.customer_code IS NOT NULL
+            INNER JOIN postgres.agency ag ON ag.agency_short_name = cl.agency
+            WHERE ag.email = :email
+        ]]>
+    </query>
+
+    <query id="findAgencyClientsByAgencyEmailCount">
+        <![CDATA[
+            SELECT COUNT(*)
+            FROM client cl
+            LEFT JOIN job_application j ON j.customer_code = cl.customer_code AND cl.customer_code IS NOT NULL
+            LEFT JOIN contract c ON c.customer_code = cl.customer_code AND cl.customer_code IS NOT NULL AND c.job_application_id = j.id
+            LEFT JOIN postgres.client_form cf ON cf.customer_code = cl.customer_code and cf.job_application_id = j.id AND cl.customer_code IS NOT NULL
+            LEFT JOIN postgres.invoice i ON i.customer_code = cl.customer_code AND (i.job_application_id IS NULL OR i.job_application_id = j.id) AND cl.customer_code IS NOT NULL
+            INNER JOIN agency ag ON ag.agency_short_name = cl.agency
+            WHERE ag.email = :email
+        ]]>
+    </query>
+
+    <query id="findIndependentAgencyClientsByAgencyEmail">
+        <![CDATA[
+            SELECT cl.*, j.id as job_application_id, j.*, j.creation_date as job_application_created_date, j.created_by as job_application_created_by,
+            j.approval_date as job_application_approval_date, j.mccusa_approved_check as job_application_mccusa_approved_check, j.agency_approved_check as job_application_agency_approved_check,
+            cf.id as client_form_id, cf.created_by as client_form_created_by, cf.created_date as client_form_created_date, cf.mccusa_approved_check as client_form_mccusa_approved_check,
+            cf.agency_approved_check as client_form_agency_approved_check, i.id as invoice_id, i.job_application_id as invoice_job_application_id,
+            i.*, j.aws_documents as job_aws_documents
+            FROM postgres.client cl
+            LEFT JOIN postgres.job_application j ON j.customer_code = cl.customer_code AND cl.customer_code IS NOT NULL
+            LEFT JOIN postgres.client_form cf ON cf.customer_code = cl.customer_code and cf.job_application_id = j.id AND cl.customer_code IS NOT NULL
+            LEFT JOIN postgres.invoice i ON i.customer_code = cl.customer_code AND (i.job_application_id IS NULL OR i.job_application_id = j.id) AND cl.customer_code IS NOT NULL
+            INNER JOIN postgres.agency ag ON ag.agency_short_name = cl.agency
+            WHERE ag.email = :email
+        ]]>
+    </query>
+
+    <query id="findIndependentAgencyClientsByAgencyEmailCount">
+        <![CDATA[
+            SELECT COUNT(*)
+            FROM client cl
+            LEFT JOIN job_application j ON j.customer_code = cl.customer_code AND cl.customer_code IS NOT NULL
+            LEFT JOIN postgres.client_form cf ON cf.customer_code = cl.customer_code and cf.job_application_id = j.id AND cl.customer_code IS NOT NULL
+            LEFT JOIN postgres.invoice i ON i.customer_code = cl.customer_code AND (i.job_application_id IS NULL OR i.job_application_id = j.id) AND cl.customer_code IS NOT NULL
+            INNER JOIN agency ag ON ag.agency_short_name = cl.agency
+            WHERE ag.email = :email
+        ]]>
+    </query>
+
+    <query id="findConsultantClients">
+        <![CDATA[
+            SELECT cl.*, j.id as job_application_id, j.*, j.creation_date as job_application_created_date, j.created_by as job_application_created_by, j.approval_date as job_application_approval_date,
+            j.mccusa_approved_check as job_application_mccusa_approved_check, j.agency_approved_check as job_application_agency_approved_check, c.id AS contract_id, c.*, c.created_by as contract_created_by, c.creation_date as contract_created_date,
+            c.job_application_id as contract_job_application_id, cf.id as client_form_id, c.mccusa_approved_check as contract_mccusa_approved_check, c.agency_approved_check as contract_agency_approved_check,
+            cf.created_by as client_form_created_by, cf.created_date as client_form_created_date, cf.mccusa_approved_check as client_form_mccusa_approved_check, cf.agency_approved_check as client_form_agency_approved_check,
+            i.id as invoice_id, i.job_application_id as invoice_job_application_id, i.*, cl.contract_type as client_contract, c.contract_type as contract_real_type, j.aws_documents as job_aws_documents, c.aws_documents as contract_aws_documents
+            FROM postgres.client cl
+            LEFT JOIN postgres.job_application j ON j.customer_code = cl.customer_code AND cl.customer_code IS NOT NULL
+            LEFT JOIN postgres.contract c ON c.customer_code = cl.customer_code AND c.job_application_id = j.id AND cl.customer_code IS NOT NULL AND c.job_application_id = j.id
+            LEFT JOIN postgres.client_form cf ON cf.customer_code = cl.customer_code and cf.job_application_id = j.id AND cl.customer_code IS NOT NULL
+            LEFT JOIN postgres.invoice i ON i.customer_code = cl.customer_code AND (i.job_application_id IS NULL OR i.job_application_id = j.id) AND cl.customer_code IS NOT NULL
+        ]]>
+    </query>
+
+    <query id="findConsultantClientsCount">
+        <![CDATA[
+            SELECT COUNT(*)
+            FROM postgres.client cl
+            LEFT JOIN postgres.job_application j ON j.customer_code = cl.customer_code AND cl.customer_code IS NOT NULL
+            LEFT JOIN postgres.contract c ON c.customer_code = cl.customer_code AND c.job_application_id = j.id AND cl.customer_code IS NOT NULL AND c.job_application_id = j.id
+            LEFT JOIN postgres.client_form cf ON cf.customer_code = cl.customer_code and cf.job_application_id = j.id AND cl.customer_code IS NOT NULL
+            LEFT JOIN postgres.invoice i ON i.customer_code = cl.customer_code AND (i.job_application_id IS NULL OR i.job_application_id = j.id) AND cl.customer_code IS NOT NULL
+        ]]>
+    </query>
+
+    <query id="findConsultantIndependentClients">
+        <![CDATA[
+            SELECT cl.*, j.id as job_application_id, j.*, j.creation_date as job_application_created_date, j.created_by as job_application_created_by,
+            j.approval_date as job_application_approval_date, j.mccusa_approved_check as job_application_mccusa_approved_check, j.agency_approved_check as job_application_agency_approved_check,
+            cf.id as client_form_id, cf.created_by as client_form_created_by, cf.created_date as client_form_created_date, cf.mccusa_approved_check as client_form_mccusa_approved_check,
+            cf.agency_approved_check as client_form_agency_approved_check, i.id as invoice_id, i.job_application_id as invoice_job_application_id,
+            i.*, j.aws_documents as job_aws_documents, cl.contract_type as client_contract
+            FROM postgres.client cl
+            INNER JOIN postgres.job_application j ON j.customer_code = cl.customer_code AND cl.email = j.recipient_email AND j.aws_documents IS NOT NULL AND j.job_application_name = 'New Job App Format - General Template.pdf'
+            INNER JOIN postgres.client_form cf ON cf.customer_code = cl.customer_code AND cf.email = cl.email AND cf.job_application_id = j.id
+            INNER JOIN postgres.invoice i ON i.customer_code = cl.customer_code AND i.job_application_id = j.id
+            INNER JOIN postgres.agency ag ON ag.agency_short_name = cl.agency AND ag.agency_type = 'IND' AND ag.email = cl.deal_owner
+            LEFT JOIN postgres.contract c ON c.customer_code = cl.customer_code AND c.job_application_id = j.id
+        ]]>
+    </query>
+
+    <query id="findConsultantIndependentClientsCount">
+        <![CDATA[
+            SELECT COUNT(*)
+            FROM postgres.client cl
+            INNER JOIN postgres.job_application j ON j.customer_code = cl.customer_code AND cl.email = j.recipient_email AND j.aws_documents IS NOT NULL AND j.job_application_name = 'New Job App Format - General Template.pdf'
+            INNER JOIN postgres.client_form cf ON cf.customer_code = cl.customer_code AND cf.email = cl.email AND cf.job_application_id = j.id
+            INNER JOIN postgres.invoice i ON i.customer_code = cl.customer_code AND i.job_application_id = j.id
+            INNER JOIN postgres.agency ag ON ag.agency_short_name = cl.agency AND ag.agency_type = 'IND' AND ag.email = cl.deal_owner
+            LEFT JOIN postgres.contract c ON c.customer_code = cl.customer_code AND c.job_application_id = j.id
+        ]]>
+    </query>
+
+</queries>

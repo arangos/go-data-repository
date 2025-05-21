@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: consultants-table
+      author: andres.echeverri
+      changes:
+        - createTable:
+            tableName: consultants
+            columns:
+              - column:
+                  name: ID
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: AREA
+                  type: varchar(255)
+              - column:
+                  name: USER_NAME
+                  type: varchar(255)
+              - column:
+                  name: MAIL
+                  type: varchar(255)
+              - column:
+                  name: ROLE
+                  type: JSON
+              - column:
+                  name: PASSWORD
+                  type: varchar(255)
+              - column:
+                  name: ACCESS
+                  type: varchar(255)

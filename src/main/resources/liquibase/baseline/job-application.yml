@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: job-application-table
+      author: andres.arango
+      changes:
+        - createTable:
+            tableName: job_application
+            columns:
+              - column:
+                  name: ID
+                  type: integer
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  defaultValueSequenceNext: job_application_seq
+              - column:
+                  name: SENDER_EMAIL
+                  type: varchar(255)
+              - column:
+                  name: RECIPIENT_EMAIL
+                  type: varchar(255)
+              - column:
+                  name: JOB_APPLICATION_NAME
+                  type: varchar(255)
+              - column:
+                  name: JOB_APPLICATION_ID
+                  type: varchar(255)
+              - column:
+                  name: CREATION_DATE
+                  type: datetime
+              - column:
+                  name: CREATED_BY
+                  type: varchar(255)
+              - column:
+                  name: APPLICATION_URL
+                  type: varchar(150)
+              - column:
+                  name: APPLICATION_DATA
+                  type: JSON

@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: addColumn-vagenci-version
+      author: andres.echeverri
+      changes:
+        - addColumn:
+            tableName: AGENCY_AUD
+            columns:
+              - column:
+                  name: AGENCY_VERSION
+                  type: varchar(255)

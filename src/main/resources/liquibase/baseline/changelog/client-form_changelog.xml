@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <!-- Add change requests below this line. -->
+
+    <changeSet id="client-form-1.0" author="daniel.morales">
+        <comment>fixed errors in table client_form columns</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form DROP COLUMN YEAR_OF_SCHOOL_GRADUATION;
+                ALTER TABLE postgres.client_form ADD COLUMN YEAR_OF_SCHOOL_GRADUATION TIMESTAMP;
+                ALTER TABLE postgres.client_form DROP COLUMN NAME_OF_BACHELOR_INSTITUTION;
+                ALTER TABLE postgres.client_form ADD COLUMN NAME_OF_BACHELOR_INSTITUTION VARCHAR(255);
+                ALTER TABLE postgres.client_form DROP COLUMN NAME_OF_POST_GRADUATION_INSTITUTION;
+                ALTER TABLE postgres.client_form ADD COLUMN NAME_OF_POST_GRADUATION_INSTITUTION VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-form-aud-1.0" author="daniel.morales">
+        <comment>fixed errors in table client_form_aud columns aud</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form_aud DROP COLUMN YEAR_OF_SCHOOL_GRADUATION;
+                ALTER TABLE postgres.client_form_aud ADD COLUMN YEAR_OF_SCHOOL_GRADUATION TIMESTAMP;
+                ALTER TABLE postgres.client_form_aud DROP COLUMN NAME_OF_BACHELOR_INSTITUTION;
+                ALTER TABLE postgres.client_form_aud ADD COLUMN NAME_OF_BACHELOR_INSTITUTION VARCHAR(255);
+                ALTER TABLE postgres.client_form_aud DROP COLUMN NAME_OF_POST_GRADUATION_INSTITUTION;
+                ALTER TABLE postgres.client_form_aud ADD COLUMN NAME_OF_POST_GRADUATION_INSTITUTION VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-form-1.1" author="daniel.morales">
+        <comment>fixed errors in table client_form columns</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form DROP COLUMN NAME_OF_POST_GRADUATION_INSTITUTION;;
+                ALTER TABLE postgres.client_form ADD COLUMN POST_GRADUATION_INSTITUTION VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-form-aud-1.1" author="daniel.morales">
+        <comment>fixed errors in table client_form_aud columns aud</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form_aud DROP COLUMN NAME_OF_POST_GRADUATION_INSTITUTION;;
+                ALTER TABLE postgres.client_form_aud ADD COLUMN POST_GRADUATION_INSTITUTION VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-form-1.2" author="andres.arango">
+        <comment>fixed errors in table client_form columns</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form
+                ALTER COLUMN PRIMARY_PHONE TYPE BIGINT;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-form-aud-1.2" author="andres.arango">
+        <comment>fixed errors in table client_form columns</comment>
+        <sql>
+            <![CDATA[
+            ALTER TABLE postgres.client_form_aud
+            ALTER COLUMN PRIMARY_PHONE TYPE BIGINT;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="job-application-1.3" author="daniel.morales">
+        <comment>Add CREATED_BY, CREATED_DATE, LAST_MODIFIED_BY and LAST_MODIFIED_DATE columns to client_form table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form ADD COLUMN CREATED_BY VARCHAR(255);
+                ALTER TABLE postgres.client_form ADD COLUMN CREATED_DATE TIMESTAMP;
+                ALTER TABLE postgres.client_form ADD COLUMN LAST_MODIFIED_BY VARCHAR(255);
+                ALTER TABLE postgres.client_form ADD COLUMN LAST_MODIFIED_DATE TIMESTAMP;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="job-application-aud-1.3" author="daniel.morales">
+        <comment>Add CREATED_BY, CREATED_DATE, LAST_MODIFIED_BY and LAST_MODIFIED_DATE columns to client_form_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form_aud ADD COLUMN CREATED_BY VARCHAR(255);
+                ALTER TABLE postgres.client_form_aud ADD COLUMN CREATED_DATE TIMESTAMP;
+                ALTER TABLE postgres.client_form_aud ADD COLUMN LAST_MODIFIED_BY VARCHAR(255);
+                ALTER TABLE postgres.client_form_aud ADD COLUMN LAST_MODIFIED_DATE TIMESTAMP;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-form-1.4" author="andres.arango">
+        <comment>Add MCCUSA_APPROVED_CHECK, CLIENT_FORM_AGENCY, AGENCY_APPROVED_CHECK, CUSTOMER_CODE, and JOB_APPLICATION_ID columns to client_form table</comment>
+        <sql>
+        <![CDATA[
+            ALTER TABLE postgres.client_form ADD COLUMN MCCUSA_APPROVED_CHECK BOOLEAN;
+            ALTER TABLE postgres.client_form ADD COLUMN CLIENT_FORM_AGENCY VARCHAR(255);
+            ALTER TABLE postgres.client_form ADD COLUMN AGENCY_APPROVED_CHECK BOOLEAN;
+            ALTER TABLE postgres.client_form ADD COLUMN CUSTOMER_CODE VARCHAR(255);
+            ALTER TABLE postgres.client_form ADD COLUMN JOB_APPLICATION_ID BIGINT;
+            ]]>
+    </sql>
+    </changeSet>
+
+    <changeSet id="client-form-aud-1.4" author="andres.arango">
+        <comment>Add MCCUSA_APPROVED_CHECK, CLIENT_FORM_AGENCY, AGENCY_APPROVED_CHECK, CUSTOMER_CODE, and JOB_APPLICATION_ID columns to client_form_aud table</comment>
+        <sql>
+        <![CDATA[
+            ALTER TABLE postgres.client_form_aud ADD COLUMN MCCUSA_APPROVED_CHECK BOOLEAN;
+            ALTER TABLE postgres.client_form_aud ADD COLUMN CLIENT_FORM_AGENCY VARCHAR(255);
+            ALTER TABLE postgres.client_form_aud ADD COLUMN AGENCY_APPROVED_CHECK BOOLEAN;
+            ALTER TABLE postgres.client_form_aud ADD COLUMN CUSTOMER_CODE VARCHAR(255);
+            ALTER TABLE postgres.client_form_aud ADD COLUMN JOB_APPLICATION_ID BIGINT;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-form-1.5" author="andres.arango">
+        <comment>Add CLIENT_FORM_AWS_URL column to client_form table</comment>
+        <sql>
+            <![CDATA[
+            ALTER TABLE postgres.client_form ADD COLUMN CLIENT_FORM_AWS_URL VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-form-aud-1.5" author="andres.arango">
+        <comment>Add CLIENT_FORM_AWS_URL column to client_form_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form_aud ADD COLUMN CLIENT_FORM_AWS_URL VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-form-1.6" author="andres.arango">
+        <comment>Reactor to column id to be Long instead of Int</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form
+                ALTER COLUMN ID TYPE BIGINT;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-form-aud-1.6" author="andres.arango">
+        <comment>Reactor to column id to be Long instead of Int</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form_aud
+                ALTER COLUMN ID TYPE BIGINT;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-form-1.7" author="andres.arango">
+        <comment>Add ZIP_CODE and CURRENT_ADDRESS columns to client_form table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form ADD COLUMN ZIP_CODE VARCHAR(255);
+                ALTER TABLE postgres.client_form ADD COLUMN CURRENT_ADDRESS VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-form-aud-1.7" author="andres.arango">
+        <comment>Add ZIP_CODE and CURRENT_ADDRESS columns to client_form_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form_aud ADD COLUMN ZIP_CODE VARCHAR(255);
+                ALTER TABLE postgres.client_form_aud ADD COLUMN CURRENT_ADDRESS VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-form-1.8" author="andres.arango">
+        <comment>Add HAVE_YOU_BEEN_TO_USA, HAVE_YOU_EVER_HAD_SOCIAL_SECURITY, and SOCIAL_SECURITY_NUMBER columns to client_form table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form ADD COLUMN HAVE_YOU_BEEN_TO_USA BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form ADD COLUMN HAVE_YOU_EVER_HAD_SOCIAL_SECURITY BOOLEAN;
+                ALTER TABLE postgres.client_form ADD COLUMN SOCIAL_SECURITY_NUMBER VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-form-aud-1.8" author="andres.arango">
+    <comment>Add HAVE_YOU_BEEN_TO_USA, HAVE_YOU_EVER_HAD_SOCIAL_SECURITY, and SOCIAL_SECURITY_NUMBER columns to client_form_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form_aud ADD COLUMN HAVE_YOU_BEEN_TO_USA BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form_aud ADD COLUMN HAVE_YOU_EVER_HAD_SOCIAL_SECURITY BOOLEAN;
+                ALTER TABLE postgres.client_form_aud ADD COLUMN SOCIAL_SECURITY_NUMBER VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-form-1.9" author="andres.arango">
+        <comment>Change PRIMARY_PHONE column type from BIGINT to VARCHAR(255) in client_form table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form ALTER COLUMN PRIMARY_PHONE TYPE VARCHAR(255);
+            ]]>
+    </sql>
+    </changeSet>
+
+    <changeSet id="client-form-aud-1.9" author="andres.arango">
+        <comment>Change PRIMARY_PHONE column type from BIGINT to VARCHAR(255) in client_form_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form_aud ALTER COLUMN PRIMARY_PHONE TYPE VARCHAR(255);
+            ]]>
+    </sql>
+    </changeSet>
+
+    <changeSet id="client-form-2.0" author="andres.arango">
+        <comment>Rename PREVIUS_JOBS column to PREVIOUS_JOBS in client_form table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form RENAME COLUMN PREVIUS_JOBS TO PREVIOUS_JOBS;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-form-aud-2.0" author="andres.arango">
+        <comment>Rename PREVIUS_JOBS column to PREVIOUS_JOBS in client_form_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form_aud RENAME COLUMN PREVIUS_JOBS TO PREVIOUS_JOBS;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-form-2.1" author="andres.arango">
+        <comment>Change HAVE_YOU_EVER_HAD_SOCIAL_SECURITY column adding default value client_form table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form ALTER COLUMN HAVE_YOU_EVER_HAD_SOCIAL_SECURITY SET DEFAULT FALSE;
+            ]]>
+    </sql>
+    </changeSet>
+
+    <changeSet id="client-form-aud-2.1" author="andres.arango">
+        <comment>Change HAVE_YOU_EVER_HAD_SOCIAL_SECURITY column adding default value client_form_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form_aud ALTER COLUMN HAVE_YOU_EVER_HAD_SOCIAL_SECURITY SET DEFAULT FALSE;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-form-2.2" author="daniel.morales">
+        <comment>Add DEPENDENT_US,
+            VISA_DEPENDENT,
+            REJECTED_DEPENDENT,
+            OVERSTAYED_DEPENDENT,
+            UNLAWFULLY_DEPENDENT,
+            DENIED_ENTRY_DEPENDENT,
+            DEPORTED_DEPENDENT,
+            IMMIGRATION_JUDGE_DEPENDENT,
+            SEXUAL_DISEASE_DEPENDENT,
+            TUBERCULOSIS_DEPENDENT,
+            INSURANCE_DEPENDENT,
+            CRIMINAL_RECORD_DEPENDENT,
+            CONVICTED_DEPENDENT,
+            SUBSTANCES_DEPENDENT columns to client_form table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form ADD COLUMN DEPENDENT_US BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form ADD COLUMN VISA_DEPENDENT BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form ADD COLUMN REJECTED_DEPENDENT BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form ADD COLUMN OVERSTAYED_DEPENDENT BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form ADD COLUMN UNLAWFULLY_DEPENDENT BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form ADD COLUMN DENIED_ENTRY_DEPENDENT BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form ADD COLUMN DEPORTED_DEPENDENT BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form ADD COLUMN IMMIGRATION_JUDGE_DEPENDENT BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form ADD COLUMN SEXUAL_DISEASE_DEPENDENT BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form ADD COLUMN TUBERCULOSIS_DEPENDENT BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form ADD COLUMN INSURANCE_DEPENDENT BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form ADD COLUMN CRIMINAL_RECORD_DEPENDENT BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form ADD COLUMN CONVICTED_DEPENDENT BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form ADD COLUMN SUBSTANCES_DEPENDENT BOOLEAN DEFAULT FALSE;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-form-aud-2.2" author="daniel.morales">
+        <comment>Add DEPENDENT_US,
+            VISA_DEPENDENT,
+            REJECTED_DEPENDENT,
+            OVERSTAYED_DEPENDENT,
+            UNLAWFULLY_DEPENDENT,
+            DENIED_ENTRY_DEPENDENT,
+            DEPORTED_DEPENDENT,
+            IMMIGRATION_JUDGE_DEPENDENT,
+            SEXUAL_DISEASE_DEPENDENT,
+            TUBERCULOSIS_DEPENDENT,
+            INSURANCE_DEPENDENT,
+            CRIMINAL_RECORD_DEPENDENT,
+            CONVICTED_DEPENDENT,
+            SUBSTANCES_DEPENDENT columns to client_form_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form_aud ADD COLUMN DEPENDENT_US BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form_aud ADD COLUMN VISA_DEPENDENT BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form_aud ADD COLUMN REJECTED_DEPENDENT BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form_aud ADD COLUMN OVERSTAYED_DEPENDENT BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form_aud ADD COLUMN UNLAWFULLY_DEPENDENT BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form_aud ADD COLUMN DENIED_ENTRY_DEPENDENT BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form_aud ADD COLUMN DEPORTED_DEPENDENT BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form_aud ADD COLUMN IMMIGRATION_JUDGE_DEPENDENT BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form_aud ADD COLUMN SEXUAL_DISEASE_DEPENDENT BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form_aud ADD COLUMN TUBERCULOSIS_DEPENDENT BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form_aud ADD COLUMN INSURANCE_DEPENDENT BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form_aud ADD COLUMN CRIMINAL_RECORD_DEPENDENT BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form_aud ADD COLUMN CONVICTED_DEPENDENT BOOLEAN DEFAULT FALSE;
+                ALTER TABLE postgres.client_form_aud ADD COLUMN SUBSTANCES_DEPENDENT BOOLEAN DEFAULT FALSE;
+            ]]>
+        </sql>
+    </changeSet>
+    <changeSet id="client-form-2.2" author="andres.echeverri">
+        <comment>Add SUBSTANCES_DEPENDENT columns to client_form table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form ADD COLUMN DEBT_DEPENDENT BOOLEAN DEFAULT FALSE;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-form-aud-2.2" author="andres.echeverri">
+        <comment>Add SUBSTANCES_DEPENDENT columns to client_form_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form_aud ADD COLUMN DEBT_DEPENDENT BOOLEAN DEFAULT FALSE;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-form-2.3" author="andres.arango">
+        <comment>added column index to customer code in client-form table</comment>
+        <sql>
+            <![CDATA[
+                CREATE INDEX idx_client_form_customer_code ON postgres.client_form (customer_code);
+                CREATE INDEX idx_client_form_code_job_app_id ON postgres.client_form (customer_code, job_application_id);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-form-aud-2.3" author="andres.arango">
+        <comment>Removing not required constraint for aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE client_form_aud DROP CONSTRAINT client_form_aud_pkey;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="client-form-2.4" author="andres.arango">
+        <comment>Add DEPENDENT_CURRENTLY_IN_USA_I_94 and SECOND_LAST_NAME columns to client_form table</comment>
+        <sql>
+        <![CDATA[
+            ALTER TABLE postgres.client_form ADD COLUMN DEPENDENT_CURRENTLY_IN_USA_I_94 VARCHAR(255);
+            ALTER TABLE postgres.client_form ADD COLUMN SECOND_LAST_NAME VARCHAR(255);
+            ]]>
+    </sql>
+    </changeSet>
+
+    <changeSet id="client-form-aud-2.4" author="andres.arango">
+        <comment>Add DEPENDENT_CURRENTLY_IN_USA_I_94 and SECOND_LAST_NAME columns to client_form_aud table</comment>
+        <sql>
+        <![CDATA[
+            ALTER TABLE postgres.client_form_aud ADD COLUMN DEPENDENT_CURRENTLY_IN_USA_I_94 VARCHAR(255);
+            ALTER TABLE postgres.client_form_aud ADD COLUMN SECOND_LAST_NAME VARCHAR(255);
+            ]]>
+    </sql>
+    </changeSet>
+
+    <changeSet id="client-form-2.5" author="andres.arango">
+        <comment>Add DEPENDENT_CURRENT_STATUS column to client_form table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form ADD COLUMN DEPENDENT_CURRENT_STATUS VARCHAR(255);
+            ]]>
+    </sql>
+    </changeSet>
+
+    <changeSet id="client-form-aud-2.5" author="andres.arango">
+        <comment>Add DEPENDENT_CURRENT_STATUS column to client_form_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.client_form_aud ADD COLUMN DEPENDENT_CURRENT_STATUS VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-agency-table
+      author: andres-arango
+      changes:
+        - createTable:
+            tableName: allowed_contract_updates
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  constraints:
+                    - NOT NULL
+                    - PRIMARY KEY
+                    - GENERATED ALWAYS AS IDENTITY
+              - column:
+                  name: current_contract_id
+                  type: BIGINT
+                  constraints:
+                    - NOT NULL
+              - column:
+                  name: allowed_contract_id
+                  type: BIGINT
+                  constraints:
+                    - NOT NULL
+              - column:
+                  name: start_date
+                  type: TIMESTAMP
+              - column:
+                  name: end_date
+                  type: TIMESTAMP
+            primaryKey:
+              columns:
+                - current_contract_id
+                - allowed_contract_id
+            foreignKeys:
+              - foreignKey:
+                  column: current_contract_id
+                  references: contracts(id)
+              - foreignKey:
+                  column: allowed_contract_id
+                  references: contracts(id)

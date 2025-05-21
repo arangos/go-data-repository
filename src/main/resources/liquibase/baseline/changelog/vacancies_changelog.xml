@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <!-- Add change requests below this line. -->
+
+    <changeSet id="vacancies-1.1" author="andres.echeverri">
+        <comment>added SPONSOR column to vacancies</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.vacancie
+                ADD COLUMN SPONSOR VARCHAR(100);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="vacancies-aud-1.1" author="andres.echeverri">
+        <comment>added SPONSOR column to vacancies-aud</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.vacancie_aud
+                ADD COLUMN SPONSOR VARCHAR(100);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="vacancies-1.2" author="andres.arango">
+        <comment>alter table vacancie name to vacancy</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.vacancie RENAME TO vacancy;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="vacancies-aud-1.2" author="andres.arango">
+        <comment>alter table vacancies-aud name to vacancy</comment>
+        <sql>
+            <![CDATA[
+            ALTER TABLE postgres.vacancie_aud RENAME TO vacancy_aud;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="vacancy-1.3" author="andres.arango">
+        <comment>added VACANCY_JOB_TEMPLATE_ID column to vacancies</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.vacancy
+                ADD COLUMN VACANCY_JOB_TEMPLATE_ID VARCHAR(100);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="vacancy-aud-1.3" author="andres.arango">
+        <comment>added VACANCY_JOB_TEMPLATE_ID column to vacancies-aud</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.vacancy_aud
+                ADD COLUMN VACANCY_JOB_TEMPLATE_ID VARCHAR(100);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="vacancy-1.4" author="andres.arango">
+        <comment>added VACANCY_CONTRACT_TEMPLATE_ID column to vacancy table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.vacancy
+                ADD COLUMN VACANCY_CONTRACT_TEMPLATE_ID VARCHAR(100);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="vacancy-aud-1.4" author="andres.arango">
+        <comment>added VACANCY_CONTRACT_TEMPLATE_ID column to vacancy-aud</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.vacancy_aud
+                ADD COLUMN VACANCY_CONTRACT_TEMPLATE_ID VARCHAR(100);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="vacancy-1.5" author="andres.arango">
+        <comment>Drop VACANCY_CONTRACT_TEMPLATE_ID column to vacancy table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.vacancy
+                DROP COLUMN vacancy_contract_template_id;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="vacancy-aud-1.5" author="andres.arango">
+        <comment>Drop VACANCY_CONTRACT_TEMPLATE_ID column to vacancy-aud</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.vacancy_aud
+                DROP COLUMN vacancy_contract_template_id;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="vacancy-1.6" author="andres.arango">
+        <comment>Rename VACANT_LOCATION to VACANT_STATE and add VACANT_CITY column to vacancy table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.vacancy RENAME COLUMN VACANT_LOCATION TO VACANT_STATE;
+                ALTER TABLE postgres.vacancy ADD COLUMN VACANT_CITY VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="vacancy-aud-1.6" author="andres.arango">
+        <comment>Rename VACANT_LOCATION to VACANT_STATE and add VACANT_CITY column to vacancy_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.vacancy_aud RENAME COLUMN VACANT_LOCATION TO VACANT_STATE;
+                ALTER TABLE postgres.vacancy_aud ADD COLUMN VACANT_CITY VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="vacancy-1.7" author="andres.arango">
+        <comment>add column VACANCY_JOB_APPLICATION_DESCRIPTION to vacancy table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.vacancy
+                ADD COLUMN VACANCY_JOB_APPLICATION_DESCRIPTION VARCHAR(1000);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="vacancy-aud-1.7" author="andres.arango">
+        <comment>add column VACANCY_JOB_APPLICATION_DESCRIPTION to vacancy_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.vacancy_aud
+                ADD COLUMN VACANCY_JOB_APPLICATION_DESCRIPTION VARCHAR(1000);
+            ]]>
+        </sql>
+    </changeSet>
+
+
+    <changeSet id="vacancy-1.8" author="andres.arango">
+        <comment>add column IS_ENABLE_FOR_AGENCY to vacancy table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.vacancy ADD COLUMN IS_ENABLE_FOR_AGENCY BOOLEAN;
+                ALTER TABLE postgres.vacancy ADD COLUMN IS_ENABLE_FOR_DIRECT_CLIENT BOOLEAN;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="vacancy-aud-1.8" author="andres.arango">
+        <comment>add column IS_ENABLE_FOR_AGENCY to vacancy_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.vacancy_aud ADD COLUMN IS_ENABLE_FOR_AGENCY BOOLEAN;
+                ALTER TABLE postgres.vacancy_aud ADD COLUMN IS_ENABLE_FOR_DIRECT_CLIENT BOOLEAN;
+            ]]>
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

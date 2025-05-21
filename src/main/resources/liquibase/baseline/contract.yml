@@ -1,0 +1,51 @@
+databaseChangeLog:
+  - changeSet:
+      id: contract-table
+      author: daniel.morales
+      changes:
+        - createTable:
+            tableName: contract
+            columns:
+              - column:
+                  name: ID
+                  type: integer
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  defaultValueSequenceNext: contract_seq
+              - column:
+                  name: SENDER_EMAIL
+                  type: varchar(255)
+              - column:
+                  name: RECIPIENT_EMAIL
+                  type: varchar(255)
+              - column:
+                  name: CONTRACT_NAME
+                  type: varchar(255)
+              - column:
+                  name: CONTRACT_ID
+                  type: varchar(255)
+              - column:
+                  name: CREATION_DATE
+                  type: datetime
+              - column:
+                  name: CREATED_BY
+                  type: varchar(255)
+              - column:
+                  name: CONTRACT_URL
+                  type: varchar(150)
+              - column:
+                  name: CONTRACT_SPONSOR
+                  type: varchar(255)
+              - column:
+                  name: APPROVED
+                  type: varchar(16)
+              - column:
+                  name: LAST_MODIFIED_BY
+                  type: varchar(255)
+              - column:
+                  name: LAST_MODIFIED_DATE
+                  type: varchar(255)
+              - column:
+                  name: CONTRACT_DATA
+                  type: JSON

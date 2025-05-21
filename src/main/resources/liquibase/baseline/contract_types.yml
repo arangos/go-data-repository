@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: contract-types-table
+      author: andres.arango
+      changes:
+        - createTable:
+            tableName: contract_types
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  defaultValueSequenceNext: contract_types_seq
+              - column:
+                  name: contract_type
+                  type: varchar(255)
+                  constraints:
+                    unique: true
+              - column:
+                  name: contract_name
+                  type: varchar(255)
+              - column:
+                  name: docusign_template_id
+                  type: varchar(255)
+              - column:
+                  name: contract_price
+                  type: bigint
+              - column:
+                  name: created_date
+                  type: datetime
+              - column:
+                  name: created_by
+                  type: varchar(255)

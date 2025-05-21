@@ -1,0 +1,48 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-invoice-table
+      author: andres.arango
+      changes:
+        - createTable:
+            tableName: invoice
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  defaultValueSequenceNext: invoice_seq
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: invoice_payment_date
+                  type: TIMESTAMP
+              - column:
+                  name: payment_invoice
+                  type: VARCHAR(255)
+              - column:
+                  name: invoice_payment_type
+                  type: VARCHAR(255)
+              - column:
+                  name: invoice_payment_comment
+                  type: VARCHAR(255)
+              - column:
+                  name: invoice_amount_paid
+                  type: BIGINT
+              - column:
+                  name: customer_code
+                  type: VARCHAR(255)
+              - column:
+                  name: job_application_id
+                  type: BIGINT
+              - column:
+                  name: invoice_created_date
+                  type: TIMESTAMP
+              - column:
+                  name: invoice_created_by
+                  type: VARCHAR(255)
+              - column:
+                  name: last_modified_by
+                  type: VARCHAR(255)
+              - column:
+                  name: last_modified_date
+                  type: TIMESTAMP

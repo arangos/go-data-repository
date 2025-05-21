@@ -1,0 +1,7 @@
+databaseChangeLog:
+- changeSet:
+    id: create-client-form-seq
+    author: andres.echeverri
+    changes:
+      - sql:
+          sql: CREATE SEQUENCE client_form_seq START WITH 1 INCREMENT BY 1;

@@ -1,0 +1,5 @@
+databaseChangeLog:
+
+  - include:
+      file: baseline-postgres.yml
+      relativeToChangelogFile: true

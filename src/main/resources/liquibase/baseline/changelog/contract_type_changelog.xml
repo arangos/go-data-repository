@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <!-- Add change requests below this line. -->
+
+    <changeSet id="contract-type-1.0" author="andres.arango">
+        <comment>add new columns to contract_types table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.contract_types
+                ADD COLUMN comments VARCHAR(255),
+                ADD COLUMN installment1 BIGINT,
+                ADD COLUMN installment2 BIGINT,
+                ADD COLUMN installment3 BIGINT,
+                ADD COLUMN installment4 BIGINT;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="contract-type-1.1" author="andres.arango">
+        <comment>add new columns to contract_types table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.contract_types
+                ADD COLUMN status VARCHAR(55),
+                ADD COLUMN active_for_agencies BOOLEAN,
+                ADD COLUMN active_for_direct_clients BOOLEAN;
+            ]]>
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

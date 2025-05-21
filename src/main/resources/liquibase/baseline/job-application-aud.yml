@@ -1,0 +1,52 @@
+databaseChangeLog:
+  - changeSet:
+      id: job-application-aud-1.0
+      author: andres.arango
+      changes:
+        - createTable:
+            tableName: job_application_aud
+            columns:
+              - column:
+                  name: REV
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: REVTYPE
+                  type: int
+              - column:
+                  name: ID
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: SENDER_EMAIL
+                  type: varchar(255)
+              - column:
+                  name: RECIPIENT_EMAIL
+                  type: varchar(255)
+              - column:
+                  name: JOB_APPLICATION_NAME
+                  type: varchar(255)
+              - column:
+                  name: JOB_APPLICATION_ID
+                  type: varchar(255)
+              - column:
+                  name: CREATION_DATE
+                  type: timestamp
+              - column:
+                  name: CREATED_BY
+                  type: varchar(255)
+              - column:
+                  name: APPLICATION_URL
+                  type: varchar(255)
+              - column:
+                  name: APPLICATION_SPONSOR
+                  type: varchar(255)
+              - column:
+                  name: APPLICATION_DATA
+                  type: json
+              - column:
+                  name: APPROVED
+                  type: varchar(255)

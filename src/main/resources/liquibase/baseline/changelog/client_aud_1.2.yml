@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: addColumns-client-aud-utm
+      author: andres.echeverri
+      changes:
+        - addColumn:
+            tableName: CLIENT_AUD
+            columns:
+              - column:
+                  name: UTM_SOURCE
+                  type: varchar(255)
+              - column:
+                  name: UTM_MEDIUM
+                  type: varchar(255)
+              - column:
+                  name: UTM_CAMPAIGN
+                  type: varchar(255)
+              - column:
+                  name: UTM_TERM
+                  type: varchar(255)
+              - column:
+                  name: UTM_CONTENT
+                  type: varchar(255)

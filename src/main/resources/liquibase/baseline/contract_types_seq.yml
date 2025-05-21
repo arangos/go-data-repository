@@ -1,0 +1,7 @@
+databaseChangeLog:
+- changeSet:
+    id: create-contract-types-seq
+    author: andres.arango
+    changes:
+      - sql:
+          sql: CREATE SEQUENCE contract_types_seq START WITH 1 INCREMENT BY 1;

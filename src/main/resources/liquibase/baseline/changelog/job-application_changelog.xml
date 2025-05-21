@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <!-- Add change requests below this line. -->
+
+    <changeSet id="job-application-1.1" author="andres.arango">
+        <comment>added APPLICATION_SPONSOR column to job_application</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.job_application
+                ADD COLUMN APPLICATION_SPONSOR VARCHAR(100);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="job-application-1.2" author="andres.arango">
+        <comment>added column index to applicationSponsor in JobApplication table</comment>
+        <sql>
+            <![CDATA[
+                CREATE INDEX idx_applicationSponsor ON postgres.job_application (APPLICATION_SPONSOR);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="job-application-1.3" author="andres.arango">
+        <comment>added APPROVED column to job_application</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.job_application
+                ADD COLUMN APPROVED BOOLEAN DEFAULT FALSE;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="job-application-1.4" author="andres.arango">
+        <comment>Modify APPROVED column in job_application table to support string values</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE job_application ALTER COLUMN approved TYPE VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="job-application-1.5" author="andres.arango">
+        <comment>Set default value for APPROVED column in job_application table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE job_application ALTER COLUMN approved SET DEFAULT 'PENDING';
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="job-application-1.6" author="andres.arango">
+        <comment>Add LAST_MODIFIED_BY and LAST_MODIFIED_DATE columns to job_application table</comment>
+        <sql>
+         <![CDATA[
+                ALTER TABLE job_application ADD COLUMN last_modified_by VARCHAR(255);
+                ALTER TABLE job_application ADD COLUMN last_modified_date TIMESTAMP;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="job-application-aud-1.6" author="andres.arango">
+        <comment>Add LAST_MODIFIED_BY and LAST_MODIFIED_DATE columns to job_application_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE job_application_aud ADD COLUMN last_modified_by VARCHAR(255);
+                ALTER TABLE job_application_aud ADD COLUMN last_modified_date TIMESTAMP;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="job-application-1.7" author="andres.arango">
+        <comment>Add LAST_MODIFIED_BY and LAST_MODIFIED_DATE columns to job_application table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE job_application ADD COLUMN APPLICATION_CERTIFICATE VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="job-application-aud-1.7" author="andres.arango">
+        <comment>Add LAST_MODIFIED_BY and LAST_MODIFIED_DATE columns to job_application_aud table</comment>
+        <sql>
+            <![CDATA[
+            ALTER TABLE job_application_aud ADD COLUMN APPLICATION_CERTIFICATE VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="job-application-1.8" author="andres.arango">
+        <comment>Add AWS_DOCUMENTS columns to job_application table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE job_application
+                ADD COLUMN AWS_DOCUMENTS JSON;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="job-application-aud-1.8" author="andres.arango">
+        <comment>Add AWS_DOCUMENTS columns to job_application_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE job_application_aud
+                ADD COLUMN AWS_DOCUMENTS JSON;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="job-application-1.9" author="andres.arango">
+        <comment>Add MCCUSA_APPROVED_CHECK, JOB_APPLICATION_AGENCY, AGENCY_APPROVED_CHECK columns to job_application table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE job_application
+                ADD COLUMN MCCUSA_APPROVED_CHECK BOOLEAN DEFAULT FALSE;
+
+                ALTER TABLE job_application
+                ADD COLUMN JOB_APPLICATION_AGENCY VARCHAR(100);
+
+                ALTER TABLE job_application
+                ADD COLUMN AGENCY_APPROVED_CHECK BOOLEAN DEFAULT FALSE;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="job-application-aud-1.9" author="andres.arango">
+        <comment>Add MCCUSA_APPROVED_CHECK, JOB_APPLICATION_AGENCY, AGENCY_APPROVED_CHECK columns to job_application_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE job_application_aud
+                ADD COLUMN MCCUSA_APPROVED_CHECK BOOLEAN DEFAULT FALSE;
+
+                ALTER TABLE job_application_aud
+                ADD COLUMN JOB_APPLICATION_AGENCY VARCHAR(100);
+
+                ALTER TABLE job_application_aud
+                ADD COLUMN AGENCY_APPROVED_CHECK BOOLEAN DEFAULT FALSE;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="job-application-2.0" author="andres.arango">
+        <comment>Add JOB_APPLICATION_VACANCY, CUSTOMER_CODE columns to job_application table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.job_application
+                ADD COLUMN JOB_APPLICATION_VACANCY VARCHAR(100);
+
+                ALTER TABLE job_application
+                ADD COLUMN CUSTOMER_CODE VARCHAR(100);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="job-application-aud-2.0" author="andres.arango">
+        <comment>Add JOB_APPLICATION_VACANCY, CUSTOMER_CODE columns to job_application_aud table</comment>
+        <sql>
+            <![CDATA[
+                    ALTER TABLE postgres.job_application_aud
+                    ADD COLUMN JOB_APPLICATION_VACANCY VARCHAR(100);
+
+                    ALTER TABLE postgres.job_application_aud
+                    ADD COLUMN CUSTOMER_CODE VARCHAR(100);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="job-application-2.1" author="andres.arango">
+        <comment>Add APPROVAL_DATE columns to job_application table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.job_application
+                ADD COLUMN APPROVAL_DATE TIMESTAMP;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="job-application-aud-2.1" author="andres.arango">
+        <comment>Add APPROVAL_DATE columns to job_application_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.job_application_aud
+                ADD COLUMN APPROVAL_DATE TIMESTAMP;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="job-application-2.2" author="andres.arango">
+        <comment>added column index to customer code in job application table</comment>
+        <sql>
+            <![CDATA[
+                CREATE INDEX idx_job_application_customer_code ON postgres.job_application (customer_code);
+                CREATE INDEX idx_job_application_code_id ON postgres.job_application (customer_code, job_application_id);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="job-application-2.3" author="andres.arango">
+        <comment>added column index to customer code id in job application table</comment>
+        <sql>
+            <![CDATA[
+                CREATE INDEX idx_job_application_customer_code_id ON postgres.job_application (customer_code, id);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="job-application-aud-2.2" author="andres.arango">
+        <comment>remove constraint invoice_aud_pkey to job_application_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.job_application_aud DROP CONSTRAINT job_application_aud_pkey;
+            ]]>
+        </sql>
+    </changeSet>
+
+
+</databaseChangeLog>

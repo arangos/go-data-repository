@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <!-- Add change requests below this line. -->
+
+    <changeSet id="invoice-1.0" author="andres.arango">
+        <comment>add constraint payment_invoice to invoice table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.invoice
+                ADD CONSTRAINT unique_payment_invoice UNIQUE (payment_invoice);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="invoice-1.1" author="andres.arango">
+        <comment>added column index to customer code in invoice table</comment>
+        <sql>
+            <![CDATA[
+                CREATE INDEX idx_invoice_customer_code ON postgres.invoice (customer_code);
+                CREATE INDEX idx_invoice_code_job_app_id ON postgres.invoice (customer_code, job_application_id);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="invoice-aud-1.0" author="andres.arango">
+        <comment>remove constraint invoice_aud_pkey to invoice-aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.invoice_aud DROP CONSTRAINT invoice_aud_pkey;
+            ]]>
+        </sql>
+    </changeSet>
+
+
+</databaseChangeLog>

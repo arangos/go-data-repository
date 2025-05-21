@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: consultants-aud-1.0
+      author: andres.echeverri
+      changes:
+        - createTable:
+            tableName: consultants_aud
+            columns:
+              - column:
+                  name: REV
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: REVTYPE
+                  type: int
+              - column:
+                  name: ID
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: AREA
+                  type: varchar(255)
+              - column:
+                  name: USER_NAME
+                  type: varchar(255)
+              - column:
+                  name: MAIL
+                  type: varchar(255)
+              - column:
+                  name: ROLE
+                  type: JSON
+              - column:
+                  name: PASSWORD
+                  type: varchar(255)
+              - column:
+                  name: ACCESS
+                  type: JSON

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <!-- Add change requests below this line. -->
+
+    <changeSet id="contract-1.0" author="andres.arango">
+        <comment>added CONTRACT_VACANCY column to contract</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.contract
+                ADD COLUMN CONTRACT_VACANCY VARCHAR(100);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="contract-aud-1.0" author="andres.arango">
+        <comment>added CONTRACT_VACANCY column to contract_aud</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.contract_aud
+                ADD COLUMN CONTRACT_VACANCY VARCHAR(100);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="contract-1.1" author="andres.arango">
+        <comment>Add AWS_DOCUMENTS columns to contract table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.contract
+                ADD COLUMN AWS_DOCUMENTS JSON;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="contract_aud-1.1" author="andres.arango">
+        <comment>Add AWS_DOCUMENTS columns to contract table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.contract_aud
+                ADD COLUMN AWS_DOCUMENTS JSON;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="contract-1.2" author="andres.arango">
+        <comment>Add MCCUSA_APPROVED_CHECK, CONTRACT_AGENCY, AGENCY_APPROVED_CHECK columns to contract table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.contract
+                ADD COLUMN MCCUSA_APPROVED_CHECK BOOLEAN DEFAULT FALSE;
+
+                ALTER TABLE postgres.contract
+                ADD COLUMN CONTRACT_AGENCY VARCHAR(100);
+
+                ALTER TABLE postgres.contract
+                ADD COLUMN AGENCY_APPROVED_CHECK BOOLEAN DEFAULT FALSE;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="contract_aud-1.2" author="andres.arango">
+        <comment>Add MCCUSA_APPROVED_CHECK, CONTRACT_AGENCY, AGENCY_APPROVED_CHECK columns to contract_aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.contract_aud
+                ADD COLUMN MCCUSA_APPROVED_CHECK BOOLEAN DEFAULT FALSE;
+
+                ALTER TABLE postgres.contract_aud
+                ADD COLUMN CONTRACT_AGENCY VARCHAR(100);
+
+                ALTER TABLE postgres.contract_aud
+                ADD COLUMN AGENCY_APPROVED_CHECK BOOLEAN DEFAULT FALSE;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="contract-1.3" author="andres.arango">
+        <comment>added CUSTOMER_CODE column to contract</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.contract
+                ADD COLUMN CUSTOMER_CODE VARCHAR(100);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="contract-aud-1.3" author="andres.arango">
+        <comment>added CUSTOMER_CODE column to contract_aud</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.contract_aud
+                ADD COLUMN CUSTOMER_CODE VARCHAR(100);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="contract-1.4" author="andres.arango">
+        <comment>added JOB_APPLICATION_ID column to contract</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.contract
+                ADD COLUMN JOB_APPLICATION_ID BIGINT;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="contract-aud-1.4" author="andres.arango">
+        <comment>added JOB_APPLICATION_ID column to contract_aud</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.contract_aud
+                ADD COLUMN JOB_APPLICATION_ID BIGINT;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="contract-1.5" author="andres.arango">
+        <comment>added column index to customer code in contract table</comment>
+        <sql>
+            <![CDATA[
+                CREATE INDEX idx_contract_customer_code ON postgres.contract (customer_code);
+                CREATE INDEX idx_contract_code_job_app_id ON postgres.contract (customer_code, job_application_id);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="contract-1.6" author="andres.arango">
+        <comment>Drop not required column in contract table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.contract DROP COLUMN approved;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="contract-aud-1.6" author="andres.arango">
+        <comment>Drop not required column in contract-aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.contract_aud DROP COLUMN approved;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="contract-aud-1.7" author="andres.arango">
+        <comment>Drop not required constraint in contract-aud table</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.contract_aud DROP CONSTRAINT contract_aud_pkey;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="contract-1.8" author="andres.arango">
+        <comment>added CONTRACT_TYPE column to contract</comment>
+        <sql>
+        <![CDATA[
+                ALTER TABLE postgres.contract
+                ADD COLUMN CONTRACT_TYPE VARCHAR(255);
+            ]]>
+    </sql>
+    </changeSet>
+
+    <changeSet id="contract-aud-1.8" author="andres.arango">
+        <comment>added CONTRACT_TYPE column to contract_aud</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.contract_aud
+                ADD COLUMN CONTRACT_TYPE VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

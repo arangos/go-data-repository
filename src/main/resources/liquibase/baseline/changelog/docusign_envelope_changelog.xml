@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <!-- Add change requests below this line. -->
+    <changeSet id="docusign_envelope-1.0" author="andres.arango">
+        <comment>Adding new column clientEmail to docusign_envelope table agency_aud</comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE postgres.docusign_envelope ADD COLUMN client_email VARCHAR(255);
+            ]]>
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
