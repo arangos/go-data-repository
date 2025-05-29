@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"go-data-repository/src/main/go/com/mccusa/datarepository/model"
 	"go-data-repository/src/main/go/com/mccusa/datarepository/repository"
+	"go-data-repository/src/main/go/com/mccusa/datarepository/util"
 )
 
 const (
@@ -13,7 +14,7 @@ const (
 )
 
 type ClientService interface {
-	CreateClient(ctx context.Context, client *model.AgencyClient) (*model.AgencyClient, error)
+	CreateClient(ctx context.Context, client *model.AgencyClient) error
 	UpdateClientByEmail(ctx context.Context, email string, client *model.AgencyClient) (*model.AgencyClient, error)
 	GetClientByEmail(ctx context.Context, email string) (*model.AgencyClient, error)
 }
@@ -32,8 +33,8 @@ func NewClientService(
 	return &clientService{customRepo: customRepo, repo: repo, utils: utils}
 }
 
-func (s *clientService) CreateClient(ctx context.Context, client *model.AgencyClient) (*model.AgencyClient, error) {
-	return s.customRepo.SaveNewClient(ctx, client)
+func (s *clientService) CreateClient(ctx context.Context, client *model.AgencyClient) error {
+	return s.customRepo.SaveClient(ctx, client)
 }
 
 func (s *clientService) UpdateClientByEmail(ctx context.Context, email string, client *model.AgencyClient) (*model.AgencyClient, error) {
@@ -52,14 +53,14 @@ func (s *clientService) UpdateClientByEmail(ctx context.Context, email string, c
 	// Optional fields
 	existing.SecondName = client.SecondName
 	existing.SecondLastName = client.SecondLastName
-
 	// Recompute completed name
-	existing.CompletedName = s.utils.ConcatenateNameParts(
+	completedName := s.utils.ConcatenateNameParts(
 		existing.FirstName,
 		derefString(existing.SecondName),
 		existing.LastName,
 		derefString(existing.SecondLastName),
 	)
+	existing.CompletedName = &completedName
 
 	if client.Gender != nil {
 		existing.Gender = client.Gender
@@ -89,7 +90,7 @@ func (s *clientService) UpdateClientByEmail(ctx context.Context, email string, c
 func (s *clientService) GetClientByEmail(ctx context.Context, email string) (*model.AgencyClient, error) {
 	client, err := s.repo.FindByEmail(ctx, email)
 	if err != nil {
-		return nil, fmt.Errorf(CLIENT_WITH_EMAIL + email + DOES_NOT_EXIST_IN_DATA_REPOSITORY)
+		return nil, fmt.Errorf("%s%s%s", CLIENT_WITH_EMAIL, email, DOES_NOT_EXIST_IN_DATA_REPOSITORY)
 	}
 	return client, nil
 }

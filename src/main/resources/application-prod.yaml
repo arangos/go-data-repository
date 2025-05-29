@@ -1,0 +1,79 @@
+# Database Configuration
+database:
+  host: localhost
+  username: mccusa
+  password: v7Ro7BXjkUYk{DM[e]R5
+  schema: postgres
+  port: 8099
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+      org:
+        hibernate:
+          envers:
+            default_schema: postgres
+            revision_field_name: rev
+            revision_on_collection_change: false
+            track_entities_changed_in_revision: true
+  liquibase:
+    enabled: true
+    default-schema: postgres
+    change-log: classpath:liquibase/db.changelog-master.yml
+    url: jdbc:postgresql://localhost:8099/postgres?stringtype=unspecified
+    contexts: dev
+    user: mccusa
+    password: v7Ro7BXjkUYk{DM[e]R5
+  servlet:
+    multipart:
+      max-file-size: 64MB
+      max-request-size: 64MB
+
+# Server Configuration
+server:
+  port: 8080
+  ssl:
+    enabled: false
+
+# Logging Configuration
+logging:
+  level:
+    web: DEBUG
+    org:
+      springframework:
+        security: TRACE
+
+# MCC USA Configuration
+mccusa:
+  baseUrl: http://localhost:8080
+  bucket-name: mccusa-bucket
+
+# DocuSign Configuration
+docusign:
+  api:
+    url: https://ca.docusign.net/restapi/v2.1/accounts/4387ccfe-46fc-49e2-b39f-1fce4cb890fc/envelopes/
+  auth:
+    url: https://account.docusign.com/oauth/token
+  jwt:
+    integration:
+      id: 78df5e12-a0e2-4448-b32f-2bb9b573219c
+    user:
+      id: 5e0d2bd5-8e63-438e-9897-4c5401cbe29c
+    expiration: 6000
+    public:
+      key:
+        path: javaProduccionRsaPublicKey.pem
+    private:
+      key:
+        path: javaProduccionRsaPrivateKey.pem
+    audition: account.docusign.com
+  redirect:
+    uri: http://localhost/
+  job:
+    schedule: 900000
+
+# Active Campaign Configuration
+activecampaign:
+  api:
+    key: your_api_key_here 

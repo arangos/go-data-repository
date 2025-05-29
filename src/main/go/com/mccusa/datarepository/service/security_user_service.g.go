@@ -51,7 +51,7 @@ func (s *SecurityUserService) loadUsersToCache(ctx context.Context) {
 	// Hash default password once
 	hashedDefault, _ := bcrypt.GenerateFromPassword([]byte(s.defaultPassword), bcrypt.DefaultCost)
 	// Load consultants
-	consultants, _ := s.consultantsRepo.FindAll(ctx)
+	consultants, _, _ := s.consultantsRepo.FindAll(ctx, 20, 0)
 	for _, c := range consultants {
 		role := "CONSULTANT_ROLE"
 		if len(c.Role) > 0 && c.Role[0].Value != "" {
@@ -63,7 +63,7 @@ func (s *SecurityUserService) loadUsersToCache(ctx context.Context) {
 		}
 	}
 	// Load sponsors
-	sponsors, _ := s.sponsorRepo.FindAll(ctx)
+	sponsors, _, _ := s.sponsorRepo.FindAll(ctx, 20, 0)
 	for _, sp := range sponsors {
 		s.userCache[sp.SponsorEmail] = UserRecord{
 			HashedPassword: hashedDefault,
@@ -71,7 +71,7 @@ func (s *SecurityUserService) loadUsersToCache(ctx context.Context) {
 		}
 	}
 	// Load agencies
-	agencies, _ := s.agencyRepo.FindAll(ctx)
+	agencies, _, _ := s.agencyRepo.FindAll(ctx, 20, 0)
 	for _, ag := range agencies {
 		s.userCache[ag.Email] = UserRecord{
 			HashedPassword: hashedDefault,

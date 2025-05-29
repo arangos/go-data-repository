@@ -3,8 +3,7 @@ package repository
 import (
 	"context"
 	"errors"
-
-	"github.com/CodeBullsCode/mccusa-data-repository-go/src/main/go/com/mccusa/datarepository/model"
+	"go-data-repository/src/main/go/com/mccusa/datarepository/model"
 	"gorm.io/gorm"
 )
 

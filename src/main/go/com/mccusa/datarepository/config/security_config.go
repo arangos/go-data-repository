@@ -1,8 +1,8 @@
 package config
 
 import (
-	"github.com/CodeBullsCode/mccusa-data-repository-go/src/main/go/com/mccusa/datarepository/service"
-	"github.com/CodeBullsCode/mccusa-data-repository-go/src/main/go/com/mccusa/datarepository/util"
+	"go-data-repository/src/main/go/com/mccusa/datarepository/service"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -35,6 +35,6 @@ func SetupSecurity(
 
 	// Basic Auth and JWT for all other APIPaths
 	auth := router.Group("/")
-	auth.Use(util.BasicAuthMiddleware(userService))
+	//auth.Use(util.BasicAuthMiddleware(userService))
 	auth.Use(jwtMiddleware)
 }

@@ -3,10 +3,20 @@ package repository
 import (
 	"context"
 	"fmt"
-	"github.com/jmoiron/sqlx"
 	"go-data-repository/src/main/go/com/mccusa/datarepository/model"
+	"go-data-repository/src/main/go/com/mccusa/datarepository/model/dto"
 	"go-data-repository/src/main/go/com/mccusa/datarepository/util"
+
+	"github.com/jmoiron/sqlx"
 )
+
+// notAllowedSearchStates holds the list of forbidden search states.
+var notAllowedSearchStates = []string{
+	"PENDING_CLIENTS",
+	"COMPLETED_CLIENTS",
+	"INVOICED_CLIENTS",
+	"ENGAGED_CLIENTS",
+}
 
 // AgencyClientCustomRepository handles complex queries not covered by GORM
 type AgencyClientCustomRepository struct {
@@ -15,8 +25,8 @@ type AgencyClientCustomRepository struct {
 }
 
 // NewAgencyClientCustomRepository creates a new custom repository
-func NewAgencyClientCustomRepository(db *sqlx.DB, utils util.ClientUtils) *AgencyClientCustomRepository {
-	return &AgencyClientCustomRepository{db: db, utils: utils}
+func NewAgencyClientCustomRepository(db *sqlx.DB, utils util.ClientUtils) AgencyClientCustomRepository {
+	return AgencyClientCustomRepository{db: db, utils: utils}
 }
 
 // GetClientsByAgencyEmailApproved fetches clients with pagination and filters
@@ -26,10 +36,10 @@ func (r *AgencyClientCustomRepository) GetClientsByAgencyEmailApproved(
 	approved string,
 	searchText string,
 	limit, offset int,
-) ([]model.ConsultantsClientsDetails, int, error) {
+) ([]dto.ConsultantsClientsDetails, int, error) {
 	// Load base SQL (from QueryLoader equivalent)
-	sqlBase := util.LoadQuery("findAgencyClientsByAgencyEmail", agency.AgencyType)
-	countBase := util.LoadQuery("findAgencyClientsByAgencyEmailCount", agency.AgencyType)
+	sqlBase := util.GetQuery("findAgencyClientsByAgencyEmail")
+	countBase := util.GetQuery("findAgencyClientsByAgencyEmailCount")
 
 	// Prepare parameters
 	params := map[string]interface{}{
@@ -38,7 +48,7 @@ func (r *AgencyClientCustomRepository) GetClientsByAgencyEmailApproved(
 		"offset": offset,
 	}
 	// Apply filters
-	if approved != "" && !util.NotAllowedSearchStates[approved] {
+	if approved != "" && !isAllowed(approved) {
 		params["approved"] = approved
 	}
 	if searchText != "" {
@@ -52,9 +62,9 @@ func (r *AgencyClientCustomRepository) GetClientsByAgencyEmailApproved(
 	}
 	defer rows.Close()
 
-	var results []model.ConsultantsClientsDetails
+	var results []dto.ConsultantsClientsDetails
 	for rows.Next() {
-		var detail model.ConsultantsClientsDetails
+		var detail dto.ConsultantsClientsDetails
 		// TODO: scan required fields
 		// rows.StructScan(&detail)
 		results = append(results, detail)
@@ -68,4 +78,44 @@ func (r *AgencyClientCustomRepository) GetClientsByAgencyEmailApproved(
 	}
 
 	return results, total, nil
+}
+
+var notAllowedSearchStatesMap = func() map[string]struct{} {
+	m := make(map[string]struct{}, len(notAllowedSearchStates))
+	for _, s := range notAllowedSearchStates {
+		m[s] = struct{}{}
+	}
+	return m
+}()
+
+// Usage:
+func isAllowed(state string) bool {
+	_, forbidden := notAllowedSearchStatesMap[state]
+	return !forbidden
+}
+
+// create new method to save the client entity
+func (r *AgencyClientCustomRepository) SaveClient(ctx context.Context, client *model.AgencyClient) error {
+	if client == nil {
+		return fmt.Errorf("client cannot be nil")
+	}
+	if client.Email == "" {
+		return fmt.Errorf("client email is required")
+	}
+
+	// Insert the client in the database
+	query := `INSERT INTO postgres.client (
+		FIRST_NAME, LAST_NAME, SECOND_NAME, SECOND_LAST_NAME, COMPLETED_NAME,
+		EMAIL, GENDER, AGENCY, SPONSOR, VACANCY, DELETED, ROUND,
+		CONTRACT_TYPE, ELIGIBLE, CLIENT_TYPE, CREATED_DATE, CREATED_BY,
+		DEAL_OWNER, CUSTOMER_CODE, PASSPORT
+	) VALUES (
+		:firstName, :lastName, :secondName, :secondLastName, :completedName,
+		:email, :gender, :agency, :sponsor, :vacancy, :deleted, :round,
+		:contractType, :eligible, :clientType, now(), 'paginamccusa',
+		:dealOwner, :customerCode, :passport
+	)`
+
+	_, err := r.db.NamedExecContext(ctx, query, client)
+	return err
 }

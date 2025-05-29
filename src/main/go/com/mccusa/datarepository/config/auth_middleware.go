@@ -1,9 +1,10 @@
 package config
 
 import (
-	"github.com/gin-gonic/gin"
 	"go-data-repository/src/main/go/com/mccusa/datarepository/service"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 // BasicAuthMiddleware enforces HTTP Basic Auth using SecurityUserService

@@ -1,14 +1,15 @@
 package controller
 
 import (
-	"github.com/gin-gonic/gin"
 	"go-data-repository/src/main/go/com/mccusa/datarepository/model"
 	"go-data-repository/src/main/go/com/mccusa/datarepository/service"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 // RegisterClientRoutes registers client endpoints under /client
-func RegisterClientRoutes(rg *gin.RouterGroup, svc service.ClientService) {
+func RegisterClientRoutes(rg *gin.Engine, svc service.ClientService) {
 	grp := rg.Group("/client")
 	grp.POST("/create", createAgencyClient(svc))
 	grp.PUT("/update", updateClientByEmail(svc))
@@ -22,7 +23,7 @@ func createAgencyClient(svc service.ClientService) gin.HandlerFunc {
 			ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
 		}
-		if err, _ := svc.CreateClient(ctx.Request.Context(), &client); err != nil {
+		if err := svc.CreateClient(ctx.Request.Context(), &client); err != nil {
 			ctx.JSON(http.StatusInternalServerError, gin.H{"error": "failed to create client"})
 			return
 		}
