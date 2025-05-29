@@ -9,7 +9,6 @@ import (
 	"go-data-repository/src/main/go/com/mccusa/datarepository/util"
 
 	"github.com/gin-gonic/gin"
-	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
 	"github.com/sirupsen/logrus"
 )
@@ -22,22 +21,11 @@ func main() {
 	if err != nil {
 		logrus.Fatalf("Failed to load config: %v", err)
 	}
+
 	// Connect to database
 	var db = config.Connect(cfg)
+	var customDb = config.ConnectCustomDb(cfg)
 
-	// Connect to the database with sqlx
-	dsn := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=require",
-		cfg.DBHost,
-		cfg.DBPort,
-		cfg.DBUser,
-		cfg.DBPassword,
-		cfg.DBName,
-	)
-	customDb, err := sqlx.Connect("postgres", dsn)
-	if err != nil {
-		logrus.Fatalf("Failed to connect to database with sqlx: %v", err)
-	}
-	logrus.Infof("Connected to database at %s", customDb.DriverName())
 	// Initialize utilities
 	config.NewHTTPClient()
 	//scheduler := config.NewTaskScheduler()

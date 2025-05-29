@@ -52,7 +52,7 @@ func getClientByEmail(svc service.ClientService) gin.HandlerFunc {
 		email := ctx.Param("email")
 		client, err := svc.GetClientByEmail(ctx.Request.Context(), email)
 		if err != nil {
-			ctx.JSON(http.StatusNotFound, gin.H{"error": "client not found"})
+			ctx.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
 			return
 		}
 		ctx.JSON(http.StatusOK, client)
