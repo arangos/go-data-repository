@@ -2,7 +2,6 @@ package config
 
 import (
 	"fmt"
-
 	"github.com/spf13/viper"
 )
 
@@ -25,8 +24,8 @@ func LoadConfig() (*Config, error) {
 	// Basic viper config
 	v.SetConfigName("application-prod")                      // name of config file (without extension)
 	v.SetConfigType("yaml")                                  // YAML format
-	v.AddConfigPath("../../../../../../src/main/resources/") // absolute path
-	//v.AddConfigPath(".")                                     // only look in current directory
+	v.AddConfigPath("../../../../../../src/main/resources/") // for local run with go run main.go
+	v.AddConfigPath("./src/main/resources/")                 // To run from intellij
 
 	// Environment variables
 	v.AutomaticEnv()

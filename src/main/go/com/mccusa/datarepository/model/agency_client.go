@@ -1,9 +1,8 @@
 package model
 
 import (
-	"time"
-
 	"gorm.io/gorm"
+	"time"
 )
 
 // TableName specifies the table name for GORM
