@@ -65,5 +65,8 @@ func main() {
 	// Start server
 	addr := fmt.Sprintf(":%s", cfg.ServerPort)
 	logrus.Infof("Server starting on %s", addr)
-	router.Run(addr)
+	err = router.Run(addr)
+	if err != nil {
+		logrus.Fatalf("Failed to start server: %v", err)
+	}
 }

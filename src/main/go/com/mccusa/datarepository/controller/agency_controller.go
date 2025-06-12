@@ -6,7 +6,7 @@ import (
 	"go-data-repository/src/main/go/com/mccusa/datarepository/service"
 )
 
-// RegisterClientRoutes registers client endpoints under /client
+// RegisterAgencyRoutes registers client endpoints under /client
 func RegisterAgencyRoutes(rg *gin.Engine, svc service.AgencyService) {
 	grp := rg.Group("/agency")
 	grp.POST("/authenticate", authenticateAgency(svc))
