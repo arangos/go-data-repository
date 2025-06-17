@@ -12,7 +12,7 @@ import (
 
 var DB *gorm.DB
 
-func Connect(cfg *Config) *gorm.DB {
+func ConnectGORM(cfg *Config) *gorm.DB {
 	var err error
 
 	// Build connection string with SSL mode
@@ -34,7 +34,7 @@ func Connect(cfg *Config) *gorm.DB {
 	return DB
 }
 
-func ConnectCustomDb(cfg *Config) *sqlx.DB {
+func ConnectNativeDbQueries(cfg *Config) *sqlx.DB {
 	// Connect to the database with sqlx
 	dsn := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=require",
 		cfg.DBHost,

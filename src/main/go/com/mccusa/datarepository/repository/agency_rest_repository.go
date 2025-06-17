@@ -12,9 +12,11 @@ type AgencyRestRepository interface {
 	// FindAll returns a slice of agencies and total count for pagination.
 	FindAll(ctx context.Context, limit int, offset int) ([]model.Agency, int64, error)
 	// FindByShortName returns agencies matching the given short name.
-	FindByShortName(ctx context.Context, shortName string) ([]model.Agency, error)
+	FindByShortName(ctx context.Context, shortName string) (model.Agency, error)
 	// FindByEmail returns the Agency with the given email.
 	FindByEmail(ctx context.Context, email string) (*model.Agency, error)
+	// Update updates the given agency in the database.
+	UpdateAgency(ctx context.Context, agency model.Agency) (bool, error)
 }
 
 type agencyRestRepo struct {
@@ -41,12 +43,13 @@ func (r *agencyRestRepo) FindAll(ctx context.Context, limit, offset int) ([]mode
 	return agencies, count, nil
 }
 
-func (r *agencyRestRepo) FindByShortName(ctx context.Context, shortName string) ([]model.Agency, error) {
-	var agencies []model.Agency
+func (r *agencyRestRepo) FindByShortName(ctx context.Context, shortName string) (model.Agency, error) {
+	var agency model.Agency
 	err := r.db.WithContext(ctx).
 		Where("agency_short_name = ?", shortName).
-		Find(&agencies).Error
-	return agencies, err
+		First(&agency).Error
+
+	return agency, err
 }
 
 func (r *agencyRestRepo) FindByEmail(ctx context.Context, email string) (*model.Agency, error) {
@@ -58,4 +61,15 @@ func (r *agencyRestRepo) FindByEmail(ctx context.Context, email string) (*model.
 		return nil, nil
 	}
 	return &agency, err
+}
+
+func (r *agencyRestRepo) UpdateAgency(ctx context.Context, agency model.Agency) (bool, error) {
+	if agency.Email == "" {
+		return false, errors.New("agency email is required for update")
+	}
+	err := r.db.WithContext(ctx).Save(&agency).Error
+	if err != nil {
+		return false, err
+	}
+	return true, nil
 }
